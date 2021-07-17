@@ -11,7 +11,7 @@ function App(){
     return (
         <ConfigProvider locale={zhCN}>
             <BrowserRouter>
-                <Home/>
+                {/*<Home/>*/}
                 <Switch>
                     {
                         routes.map(route =>

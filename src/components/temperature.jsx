@@ -5,13 +5,6 @@ const scaleNames = {
     f: 'Fahrenheit'
 };
 
-function BoilingVerdict(props){
-    if(props.celsius >= 100){
-        return <p>The water would boil.</p>;
-    }
-    return <p>The water would not boil.</p>;
-}
-
 function toCelsius(fahrenheit){
     return (fahrenheit - 32) * 5 / 9;
 }
@@ -30,6 +23,15 @@ function tryConvert(temperature, convert){
     return rounded.toString();
 }
 
+// 函数组件
+function BoilingVerdict(props){
+    if(props.celsius >= 100){
+        return <p>The water would boil.</p>;
+    }
+    return <p>The water would not boil.</p>;
+}
+
+// 类组件
 class TemperatureInput extends React.Component {
     constructor(props){
         super(props);
@@ -52,7 +54,7 @@ class TemperatureInput extends React.Component {
     }
 }
 
-class Temperature extends React.Component {
+export default class Temperature extends React.Component {
     constructor(props){
         super(props);
         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
@@ -86,4 +88,4 @@ class Temperature extends React.Component {
     }
 }
 
-export default Temperature;
+// export default Temperature;
