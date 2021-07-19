@@ -33,6 +33,9 @@ function BoilingVerdict(props){
 
 // 类组件
 class TemperatureInput extends React.Component {
+    static defaultProps ={} // 指定默认标签属性
+    static propTypes = {} // 对标签属性进行必要性，类型限制
+
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);

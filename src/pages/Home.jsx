@@ -26,7 +26,7 @@ function Home(props){
         history.go(param);
     }
     const goBackClick2 = (param) => {
-        return (event) => {
+        return (event) => { // react调用时会自动添加上event参数
             history.go(param);
         }
     }
@@ -34,14 +34,19 @@ function Home(props){
     return (
         <>
             <Khjd/>
+            <div className="nav">12</div>
+
             {/*<Button onClick={goHomeClick}>Go home</Button>*/}
             {/*<Button theme="primary" onClick={goAboutClick}>Go about</Button>*/}
 
             {/*/!*函数组件中点击事件的三种传参方式*!/*/}
+            {/*函数非柯里化的实现*/}
             {/*<button type="button" onClick={(event) => goBackClick(-1, event)}>*/}
             {/*    Go back*/}
             {/*</button>*/}
+
             {/*<button type="button" onClick={goBackClick.bind(this, -1)}>Go back1</button>*/}
+            {/*函数柯里化的实现*/}
             {/*<button type="button" onClick={pageBack(-1)}>Go back2</button>*/}
         </>
     );
