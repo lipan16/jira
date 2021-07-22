@@ -1,15 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import routes from './router';
 import Home from './pages/Home';
-
 import {ConfigProvider} from 'zarm';
-import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 import 'zarm/dist/zarm.css';
 
 function App(){
     return (
-        <ConfigProvider locale={zhCN}>
+        <ConfigProvider>
             <BrowserRouter>
                 {/*<Home/>*/}
                 <Switch>
