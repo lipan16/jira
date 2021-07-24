@@ -62,7 +62,8 @@ html, body{
     display        : flex;
     flex-direction : column;
 
-    > :nth-child(n){
+    // 子代元素，不加> ：所有子孙代元素
+    >:nth-child(n){
         flex-shrink : 0;
     }
 

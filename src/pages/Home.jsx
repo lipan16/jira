@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 import {Button} from 'zarm'
-import Khjd from './khjd/Khjd';
+import Khjd from './khjd';
 import ToDoList from './todolist'
 import {pageBack} from '../utils/func';
 
@@ -34,8 +34,8 @@ function Home(props){
 
     return (
         <>
-            <Khjd/>
-            {/*<ToDoList/>*/}
+            {/*<Khjd/>*/}
+            <ToDoList/>
 
             {/*<Button onClick={goHomeClick}>Go home</Button>*/}
             {/*<Button theme="primary" onClick={goAboutClick}>Go about</Button>*/}
