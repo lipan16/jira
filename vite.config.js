@@ -31,8 +31,8 @@ export default defineConfig({
             // ws:false, //webSocket
             '/api': {
                 target: 'http://localhost:8080/',
-                changeOrigin: true, //发送请求头host会被设置target
-                pathReWrite: {
+                changeOrigin: true, //发送请求头host会被设置target(http://localhost:8080/),避免后端做什么限制
+                pathReWrite: { // 重写url地址
                     '^/': '/'
                 }
             }

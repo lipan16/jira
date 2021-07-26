@@ -1,8 +1,8 @@
 import React from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
-import {Button} from 'zarm'
+import {Button} from 'zarm';
 import Khjd from './khjd';
-import ToDoList from './todolist'
+import ToDoList from './todolist';
 import {pageBack} from '../utils/func';
 
 
@@ -26,16 +26,17 @@ function Home(props){
         console.log('1111');
         history.go(param);
     }
+
     const goBackClick2 = (param) => {
         return (event) => { // react调用时会自动添加上event参数
             history.go(param);
-        }
-    }
+        };
+    };
 
     return (
         <>
-            {/*<Khjd/>*/}
-            <ToDoList/>
+            <Khjd/>
+            {/*<ToDoList/>*/}
 
             {/*<Button onClick={goHomeClick}>Go home</Button>*/}
             {/*<Button theme="primary" onClick={goAboutClick}>Go about</Button>*/}
