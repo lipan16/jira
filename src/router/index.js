@@ -1,7 +1,7 @@
 import Temperature from '../components/temperature';
 import About from '@/components/about';
 import Home from '../pages/Home';
-import khjdDetail from '@/pages/khjd/detail/index'
+import khjdTask from '@/pages/khjd/taskhandle/index'
 
 const routes = [
     {
@@ -15,9 +15,9 @@ const routes = [
         component: About
     },
     {
-        path: '/khjd/detail',
-        name: 'khjdDetail',
-        component: khjdDetail
+        path: '/khjd/task',
+        name: 'khjdTask',
+        component: khjdTask
     }
 ];
 
