@@ -4,6 +4,7 @@ import {Button} from 'zarm';
 import Khjd from './khjd';
 import ToDoList from './todolist';
 import {pageBack} from '../utils/func';
+import About from '../components/about';
 
 
 function Home(props){
@@ -35,7 +36,8 @@ function Home(props){
 
     return (
         <>
-            <Khjd/>
+            {/*<Khjd/>*/}
+            <About/>
             {/*<ToDoList/>*/}
 
             {/*<Button onClick={goHomeClick}>Go home</Button>*/}
