@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import store from '../redux/store';
-import {addAction} from '../redux/actions/khjd_action';
+import store from '../../redux/store';
+import {addAction} from '../../redux/actions/khjd_action';
 import {connect} from 'react-redux';
 
 function AboutA(props){
