@@ -9,7 +9,7 @@ function Khjd(){
     let history = useHistory();
 
     return (
-        <div className="khjd flex-list">
+        <div className="flex-list khjd">
             <Navigation title="开户尽调"/>
             <Header/>
             <ListItem history={history}/>

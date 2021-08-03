@@ -1,0 +1,94 @@
+.task{
+    flex-grow        : 1;
+    flex-shrink      : 1;
+    overflow         : auto;
+    background-color : #F5F6FB;
+
+    .blue-bg{
+        height           : 80px;
+        background-color : #2A82E4;
+    }
+
+    .context{
+        transform : translateY(-68px);
+
+
+        .header{
+            //height        : 96px;
+            margin        : 12px;
+            background    : #FFFFFF;
+            box-shadow    : 0 0 5px 0 rgba(233, 237, 255, 0.50);
+            border-radius : 8px;
+
+            .name{
+                padding        : 20px 12px 10px;
+                font-family    : PingFangSC-Medium;
+                font-size      : 17px;
+                color          : #2B3852;
+                letter-spacing : 0;
+                line-height    : 24px;
+            }
+
+            .number{
+                font-family    : PingFangSC-Regular;
+                font-size      : 14px;
+                color          : #7585A3;
+                letter-spacing : -0.1px;
+                padding        : 0 12px 24px;
+            }
+        }
+
+        .task-item{
+            margin        : 8px 12px;
+            height        : 80px;
+            background    : #FFFFFF;
+            box-shadow    : 0 0 5px 0 rgba(233, 237, 255, 0.50);
+            border-radius : 8px;
+
+            .svg{
+                margin-left : 16px;
+                flex-shrink : 0;
+            }
+
+            .name{
+                margin-left    : 12px;
+                flex-grow      : 1;
+                font-family    : PingFangSC-Regular;
+                font-size      : 17px;
+                color          : #2B3852;
+                letter-spacing : 0;
+            }
+
+            .status{
+                flex-shrink    : 0;
+                margin-right   : 22px;
+                font-family    : PingFangSC-Medium;
+                font-size      : 14px;
+                color          : #DE1B1B;
+                letter-spacing : 0;
+            }
+
+            .status-sure{
+                color : #2A82E4;
+            }
+        }
+
+        .btn{
+            margin         : 16px 12px;
+            line-height    : 40px;
+            text-align     : center;
+            border-radius  : 8px 5px 5px 5px;
+            letter-spacing : 0;
+            font-family : PingFangSC-Regular;
+            font-size   : 16px;
+            background  : #abafb0;
+            color       : #FFFFFF;
+        }
+
+        .finished{
+            background  : #2A82E4;
+            color       : #FFFFFF;
+        }
+
+    }
+}
