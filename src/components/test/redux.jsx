@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addAction} from '../../redux/actions/khjd_action';
+import {addAction} from '../../redux/actions/test';
 
 class reduxCount extends React.Component {
 
