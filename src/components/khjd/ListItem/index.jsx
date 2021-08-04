@@ -1,37 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import './index.less';
 
-export default class ListItem extends React.Component {
-
-    obj = {
-        name: '广东龙胜阿里巴巴化学贸易有限公司尽调广东龙胜阿里巴巴化学贸',
-        status: '审核完成',
-        acceptanceTime: '2020-09-01',
-        reasonForFailure: '照片不清晰'
-    };
-
-    state = {
-        khjdList: [this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj]
-    };
-
-    goToDetail = () => {
-        this.props.history.push('/khjd/task');
-    };
-
-    render(){
-
-        return (
-            <div className="list">
-                {
-                    this.state.khjdList.map((item, index) => {
-                        return <Item key={index} obj={item} goToDetail={this.goToDetail}/>;
-                    })
-                }
-            </div>
-        );
-    }
-}
+import {storeKhjdTask} from '../../../redux/actions/khjd';
 
 class Item extends React.Component {
     static propTypes = {
@@ -57,3 +29,46 @@ class Item extends React.Component {
         );
     }
 }
+
+// ListItem ui 组件
+class ListItem extends React.Component {
+
+    obj = {
+        id: '123',
+        name: '广东龙胜阿里巴巴化学贸易有限公司尽调广东龙胜阿里巴巴化学贸',
+        status: '审核完成',
+        acceptanceTime: '2020-09-01',
+        reasonForFailure: '照片不清晰'
+    };
+
+    state = {
+        khjdList: [this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj]
+    };
+
+    goToDetail = (item) => {
+        console.log('storeKhjdTask', item);
+        // redux 保存已完成列表数据
+        // redux 保存待处理列表数据
+        this.props.storeKhjdTask(item); // redux 保存任务项
+        this.props.history.push('/khjd/task');
+    };
+
+    render(){
+
+        return (
+            <div className="list">
+                {
+                    this.state.khjdList.map((item, index) => {
+                        return <Item key={index} obj={item} goToDetail={() => this.goToDetail(item)}/>;
+                    })
+                }
+            </div>
+        );
+    }
+}
+
+// listItem 容器组件
+export default connect(
+    state => ({}),
+    {storeKhjdTask}
+)(ListItem);

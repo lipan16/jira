@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import store from '../../redux/store';
-import {addAction} from '../../redux/actions/khjd_action';
+import {addAction} from '../../redux/actions/test';
 import {connect} from 'react-redux';
+import testReducer from '../../redux/reducers/test';
 
 function AboutA(props){
     const [count, setCount] = useState(0);
@@ -48,7 +49,7 @@ class About extends React.Component {
         return (
             <div>
                 <div>count: {this.state.countA}</div>
-                <div>redux count: {this.props.he}</div>
+                <div>redux count: {this.props.testReducer}</div>
                 <br/>
 
                 <button onClick={() => this.setState({countA: this.state.countA + 1})}>
@@ -66,6 +67,6 @@ class About extends React.Component {
 // export default About;
 // about的容器组件
 export default connect(
-    store => ({he: store.khjd}),
+    store => ({testReducer: store.testReducer}),
     {add: addAction}
 )(About);
