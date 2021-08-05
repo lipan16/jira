@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './index.less';
 
-import {storeKhjdTask} from '../../../redux/actions/khjd';
+import {storeCompleteList, storePendingList, storeKhjdTask} from '../../../redux/actions/khjd';
 
 class Item extends React.Component {
     static propTypes = {
@@ -47,10 +47,10 @@ class ListItem extends React.Component {
 
     goToDetail = (item) => {
         console.log('storeKhjdTask', item);
-        // redux 保存已完成列表数据
-        // redux 保存待处理列表数据
+        this.props.storeCompleteList(this.state.khjdList); // redux 保存已完成列表数据
+        this.props.storePendingList(this.state.khjdList); // redux 保存待处理列表数据
         this.props.storeKhjdTask(item); // redux 保存任务项
-        this.props.history.push('/khjd/task');
+        this.props.history.push(this.props.to);
     };
 
     render(){
@@ -70,5 +70,5 @@ class ListItem extends React.Component {
 // listItem 容器组件
 export default connect(
     state => ({}),
-    {storeKhjdTask}
+    {storeCompleteList, storePendingList, storeKhjdTask}
 )(ListItem);

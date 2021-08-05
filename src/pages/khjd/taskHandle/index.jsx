@@ -20,7 +20,9 @@ class TaskItem extends React.Component {
             <div className="task-item flex-inline">
                 <img src={src} className="svg"/>
                 <div className="name">{name}</div>
-                <div className={['status', status ? 'status-sure' : ''].join(' ')}>已确认</div>
+                <div className={['status', status ? 'status-sure' : ''].join(' ')}>
+                    {status ? '已确认' : '未完成'}
+                </div>
             </div>
         );
     }
@@ -37,7 +39,7 @@ class KhjdTask extends React.Component {
         const obj4 = {src: src4, name: '尽职调查照片拍摄', status: false};
         return (
             <>
-                <Navigation title="尽调任务办理" show={false}/>
+                <Navigation title="尽调任务办理"/>
 
                 <div className="task">
                     <div className="blue-bg"/>

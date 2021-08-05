@@ -7,12 +7,12 @@ import searchSvg from '@/assets/search.svg';
 
 class Navigation extends React.Component {
     static defaultProps = {
-        show: true
+        show: false
     };
 
     static propTypes = {
         title: PropTypes.string.isRequired,
-        show: PropTypes.bool.isRequired
+        show: PropTypes.bool
     };
 
     pageBack = () => {
