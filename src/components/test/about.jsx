@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import store from '../../redux/store';
 import {addAction} from '../../redux/actions/test';
 import {connect} from 'react-redux';
-import testReducer from '../../redux/reducers/test';
 
 function AboutA(props){
     const [count, setCount] = useState(0);
