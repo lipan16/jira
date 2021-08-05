@@ -1,6 +1,7 @@
 import Home from '../pages/Home';
 import About from '@/components/test/about';
-import khjdTask from '@/pages/khjd/taskhandle/index'
+import taskHandle from '@/pages/khjd/taskHandle/index';
+import khjdDetail from '@/pages/khjd/detail/index';
 
 const routes = [
     {
@@ -14,9 +15,14 @@ const routes = [
         component: About
     },
     {
-        path: '/khjd/task',
-        name: 'khjdTask',
-        component: khjdTask
+        path: '/khjd/detail',
+        name: 'khjdDetail',
+        component: khjdDetail
+    },
+    {
+        path: '/khjd/taskHandle',
+        name: 'taskHandle',
+        component: taskHandle
     }
 ];
 
