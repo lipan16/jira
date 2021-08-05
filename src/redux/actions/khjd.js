@@ -1,5 +1,5 @@
 // 该文件专门为khjd生成action对象
-import {COMPLETELIST, PENDINGLIST, KHJDTASK} from '../constant';
+import {COMPLETELIST, PENDINGLIST, KHJDTASK} from '../../utils/constant';
 
 // 保存已完成列表项
 export const storeCompleteList = (data) => ({type: COMPLETELIST, data});

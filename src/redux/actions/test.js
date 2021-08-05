@@ -1,5 +1,5 @@
 // 该文件专门为test生成action对象
-import {ADD} from '../constant'
+import {ADD} from '../../utils/constant'
 
 // 返回一个同步action，同步action是一个一般对象
 export const addAction = (data)=>({type: ADD, data})

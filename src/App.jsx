@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import routes from './router';
-import Home from './pages/Home';
 import {ConfigProvider} from 'zarm';
 import 'zarm/dist/zarm.css';
+import About from './components/test/about';
 
 function App(){
     return (
         <ConfigProvider>
             <BrowserRouter>
-                {/*<Home/>*/}
                 <Switch>
                     {
                         routes.map(route =>
@@ -18,8 +17,9 @@ function App(){
                                 <route.component/>
                             </Route>
                         )
-                        // <Route component={NotFound}></Route>
                     }
+                    {/*未匹配到路由时的友好页面*/}
+                    <Route component={About}/>
                 </Switch>
             </BrowserRouter>
         </ConfigProvider>

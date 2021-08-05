@@ -1,28 +1,30 @@
 import Home from '../pages/Home';
+import {RouterPath} from '../utils/constant';
 import About from '@/components/test/about';
-import taskHandle from '@/pages/khjd/taskHandle/index';
 import khjdDetail from '@/pages/khjd/detail/index';
+import taskHandle from '@/pages/khjd/taskHandle/index';
+import taskTransfer from '@/pages/khjd/taskTransfer/index';
 
 const routes = [
     {
-        path: '/',
-        name: 'home',
+        path: RouterPath.index,
         component: Home
     },
     {
-        path: '/about',
-        name: 'about',
+        path: RouterPath.about,
         component: About
     },
     {
-        path: '/khjd/detail',
-        name: 'khjdDetail',
+        path: RouterPath.khjdDetail,
         component: khjdDetail
     },
     {
-        path: '/khjd/taskHandle',
-        name: 'taskHandle',
+        path: RouterPath.taskHandle,
         component: taskHandle
+    },
+    {
+        path: RouterPath.taskTransfer,
+        component: taskTransfer
     }
 ];
 

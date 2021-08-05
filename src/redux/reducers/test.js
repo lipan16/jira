@@ -1,4 +1,4 @@
-import {ADD, DEC} from '../constant';
+import {ADD, DEC} from '../../utils/constant';
 
 const initState = 0;
 

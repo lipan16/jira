@@ -1,4 +1,4 @@
-import {COMPLETELIST, PENDINGLIST, KHJDTASK} from '../constant';
+import {COMPLETELIST, PENDINGLIST, KHJDTASK} from '../../utils/constant';
 
 const initState = {
     completeList: [], // 已完成列表
