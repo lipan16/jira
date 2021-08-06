@@ -6,15 +6,26 @@
     letter-spacing  : 0;
 
     .label{
-        flex-shrink : 0;
-        padding     : 6px 16px 6px 0;
-        line-height : 20px;
-        color       : #999;
-        min-width   : 4em;
+        flex-shrink   : 0;
+        padding-right : 16px;
+
+        color         : #999;
+        min-width     : 4em;
     }
 
     .value{
-        color       : #333;
-        line-height : 20px;
+        color      : #333;
+        //flex-grow  : 1;
+        //text-align : right;
+    }
+
+    .arrow::after{
+        display      : inline-block;
+        content      : "";
+        border-right : 2px solid #bcbcbc;
+        border-top   : 2px solid #bcbcbc;
+        width        : 10px;
+        height       : 10px;
+        transform    : rotate(45deg);
     }
 }
