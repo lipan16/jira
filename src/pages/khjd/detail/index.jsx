@@ -1,11 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
+import {RouterPath} from '../../../utils/constant';
 import Navigation from '../../../components/khjd/Navigation';
 import LpCell from '../../../components/khjd/Cell';
 import './index.less';
 
 class Detail extends React.Component {
+
+    toTask = (path) => {
+        this.props.history.push(path);
+    };
+
 
     render(){
         const {khjdTask} = this.props.khjdReducer;
@@ -23,9 +30,16 @@ class Detail extends React.Component {
                         <LpCell label="当前状态" value="未办理"/>
                         <LpCell label="地址" value="广东龙胜阿里巴巴化学贸易有限公司尽调广东龙胜阿里巴巴化学贸"/>
 
-                        <div className="btn handle">办理</div>
-                        <div className="btn transfer">转让</div>
-                        <div className='strong'/>
+                        <div className="btns">
+                            <div className="btn handle"
+                                 onClick={() => this.toTask(RouterPath.taskHandle)}>办理
+                            </div>
+                            <div className="btn transfer"
+                                 onClick={() => this.toTask(RouterPath.taskTransfer)}>转让
+                            </div>
+                        </div>
+
+                        <div className="strong"/>
 
                         <div className="task-wander">
                             任务流转
@@ -39,6 +53,8 @@ class Detail extends React.Component {
 }
 
 
-export default connect(state => (
-    {khjdReducer: state.khjdReducer}
-), {})(Detail);
+export default withRouter(
+    connect(state => (
+        {khjdReducer: state.khjdReducer}
+    ), {})(Detail)
+);

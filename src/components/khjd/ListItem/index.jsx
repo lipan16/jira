@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import './index.less';
+import {withRouter} from 'react-router-dom';
 
 import {storeCompleteList, storePendingList, storeKhjdTask} from '../../../redux/actions/khjd';
+import './index.less';
 
 class Item extends React.Component {
     static propTypes = {
@@ -68,7 +69,9 @@ class ListItem extends React.Component {
 }
 
 // listItem 容器组件
-export default connect(
-    state => ({}),
-    {storeCompleteList, storePendingList, storeKhjdTask}
-)(ListItem);
+export default withRouter(
+    connect(
+        state => ({}),
+        {storeCompleteList, storePendingList, storeKhjdTask}
+    )(ListItem)
+);
