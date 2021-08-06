@@ -4,10 +4,6 @@ import {connect} from 'react-redux';
 
 import Navigation from '../../../components/khjd/Navigation';
 import './index.less';
-import src1 from '../../../assets/src1.svg';
-import src2 from '../../../assets/src2.svg';
-import src3 from '../../../assets/src3.svg';
-import src4 from '../../../assets/src4.svg';
 
 class TaskItem extends React.Component {
     static propTypes = {
@@ -29,14 +25,17 @@ class TaskItem extends React.Component {
 }
 
 class TaskHandle extends React.Component {
+    generateReport = () => {
+        console.log('生成尽职调查报告');
+    };
 
     render(){
         console.log(this.props.khjdReducer);
-        const {khjdTask} = this.props.khjdReducer;
-        const obj1 = {src: src1, name: '客户基本信息录入', status: false};
-        const obj2 = {src: src2, name: '客户风险评估建议', status: true};
-        const obj3 = {src: src3, name: '尽职调查情况录入', status: true};
-        const obj4 = {src: src4, name: '尽职调查照片拍摄', status: false};
+        const {khjdTask, taskInfoEntry} = this.props.khjdReducer;
+        const generateReportClickable = taskInfoEntry.every(item => {
+            return !item.taskStatus;
+        });
+
         return (
             <>
                 <Navigation title="尽调任务办理"/>
@@ -50,14 +49,16 @@ class TaskHandle extends React.Component {
                             <div className="number">任务编号：{khjdTask.id}</div>
                         </div>
 
-                        <TaskItem item={obj1}/>
-                        <TaskItem item={obj2}/>
-                        <TaskItem item={obj3}/>
-                        <TaskItem item={obj4}/>
+                        <TaskItem item={taskInfoEntry[0]}/>
+                        <TaskItem item={taskInfoEntry[1]}/>
+                        <TaskItem item={taskInfoEntry[2]}/>
+                        <TaskItem item={taskInfoEntry[3]}/>
 
-                        <div className="btn">生成尽职调查报告</div>
-                        {/*<div className="btn finished">审核完成</div>*/}
-                        {/*<div className="btn failed">审核失败</div>*/}
+                        <div
+                            className={['btn', generateReportClickable ? 'finished' : ''].join(' ')}
+                            onClick={() => generateReportClickable && this.generateReport()}>生成尽职调查报告
+                        </div>
+
                     </div>
                 </div>
             </>
