@@ -28,7 +28,7 @@ class TaskItem extends React.Component {
     }
 }
 
-class KhjdTask extends React.Component {
+class TaskHandle extends React.Component {
 
     render(){
         console.log(this.props.khjdReducer);
@@ -41,7 +41,7 @@ class KhjdTask extends React.Component {
             <>
                 <Navigation title="尽调任务办理"/>
 
-                <div className="task">
+                <div className="task flex-list">
                     <div className="blue-bg"/>
 
                     <div className="context">
@@ -67,4 +67,4 @@ class KhjdTask extends React.Component {
 
 export default connect(state => (
     {khjdReducer: state.khjdReducer}
-), {})(KhjdTask);
+), {})(TaskHandle);
