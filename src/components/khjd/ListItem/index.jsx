@@ -16,9 +16,7 @@ class Item extends React.Component {
         const {obj} = this.props;
         return (
             <>
-                <div className="flex-list list-item" onClick={() =>
-                    this.props.goToDetail()
-                }>
+                <div className="flex-list list-item" onClick={this.props.goToDetail}>
                     <div className="flex-inline item-name-status">
                         <div className="name">{obj.name}</div>
                         <div className="status">{obj.status}</div>
