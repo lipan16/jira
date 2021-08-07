@@ -1,9 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import React        from 'react';
+import PropTypes    from 'prop-types';
+import {connect}    from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {Toast}      from 'zarm';
 
-import Navigation from '../../../components/khjd/Navigation';
+import Navigation   from '../../../components/khjd/Navigation';
+import {RouterPath} from '../../../utils/constant';
 import './index.less';
 
 class TaskItem extends React.Component {
@@ -32,7 +34,12 @@ class TaskHandle extends React.Component {
     };
 
     // 跳转到具体信息录入页面
-    gotoEntry = (task) => {
+    gotoEntry = (task, handleRiskAble) => {
+        // 先录入客户基本信息才允许进行客户风险评估
+        if(task.path === RouterPath.handleRisk && !handleRiskAble){
+            Toast.show('请先录入客户基本信息');
+            return;
+        }
         console.log(task);
         console.log(this.props.history);
         this.props.history.push(task.path);
@@ -41,9 +48,10 @@ class TaskHandle extends React.Component {
     render(){
         console.log(this.props.khjdReducer);
         const {khjdTask, taskInfoEntry} = this.props.khjdReducer;
-        const generateReportClickable = taskInfoEntry.every(item => {
+        const generateReportClickable   = taskInfoEntry.every(item => {
             return item.taskStatus;
         });
+        const handleRisk                = taskInfoEntry[0].status;
 
         return (
             <>
@@ -61,7 +69,7 @@ class TaskHandle extends React.Component {
                         {
                             taskInfoEntry.map((task, index) =>
                                 <TaskItem key={index} item={task}
-                                          gotoEntry={() => this.gotoEntry(task)}/>
+                                          gotoEntry={() => this.gotoEntry(task, handleRisk)}/>
                             )
                         }
 
