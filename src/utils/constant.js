@@ -22,3 +22,11 @@ export const RouterPath = {
     handleSurvey   : '/khjd/handleSurvey',
     handlePhoto    : '/khjd/handlePhoto'
 };
+
+export const CustomerBasicInfo = {
+    basicInfo      : 'basicInfo',
+    customerType   : 'customerType',
+    operateInfo    : 'operateInfo',
+    personInfo     : 'personInfo',
+    openAccountInfo: 'openAccountInfo'
+};
