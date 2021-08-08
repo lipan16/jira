@@ -45,6 +45,7 @@
 
         .za-cell__body{
             .za-cell__title{
+                //min-width : 8em;
                 padding : 12px 0;
             }
 
@@ -75,21 +76,22 @@
         }
     }
 
-    .za-input{
-        background-color : #fff;
-        margin           : 0 16px;
-        border           : 1px solid #93938f;
-        width            : unset;
-    }
-
     .office-address{
         margin-bottom    : 8px;
         padding-bottom   : 8px;
         background-color : #fff;
+
+        .za-input{
+            background-color : #fff;
+            margin           : 0 16px;
+            border           : 1px solid #93938f;
+            width            : unset;
+        }
     }
 
     .show-register-capital{
         margin-bottom : 8px;
+
         .za-select__input{
             line-height : 20px;
             text-align  : end;
@@ -98,5 +100,61 @@
                 top : 14px;
             }
         }
+
+        .za-cell__title{
+            min-width : 8em;
+        }
+
+        .za-input{
+            background-color : #fff;
+            line-height      : 20px;
+            padding          : 11px 0;
+
+            > input{
+                text-align    : end;
+                padding-right : 20px;
+            }
+        }
+    }
+
+    .business-scope{
+        margin-bottom : 8px;
+
+        .za-cell{
+            .za-cell__title--label{
+                width : 5em;
+            }
+
+            &::after{
+                display : none;
+            }
+        }
+
+        .za-input{
+            flex-grow : 1;
+            width     : unset;
+            margin    : 6px 0;
+            padding   : 0;
+            border    : 1px solid #bdb7b7;
+        }
+    }
+
+    .not-input{
+        border : 1px solid #f00 !important;
+    }
+
+    .unsaved{
+        margin        : 16px;
+        line-height   : 40px;
+        text-align    : center;
+        border-radius : 5px;
+        font-size     : 16px;
+        background    : #abafb0;
+        color         : #fff;
+
+    }
+
+    .saved{
+        background : #4f67e5;
     }
 }
