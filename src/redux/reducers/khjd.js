@@ -30,11 +30,11 @@ const initState = {
     //     status         : [false, false, false, false, false] // 客户基本信息保存情况
     // },
     customerBasicInfo: [ // 客户基本信息
-        {id: CustomerBasicInfo.basicInfo, name: '基本信息', status: true, path: ''},
-        {id: CustomerBasicInfo.customerType, name: '客户归类', status: false, path: ''},
-        {id: CustomerBasicInfo.operateInfo, name: '经营情况', status: false, path: ''},
-        {id: CustomerBasicInfo.personInfo, name: '人员情况', status: false, path: ''},
-        {id: CustomerBasicInfo.openAccountInfo, name: '开户情况', status: false, path: ''}
+        {id: CustomerBasicInfo.basicInfo, name: '基本信息', status: true, path: RouterPath.basicInfo},
+        {id: CustomerBasicInfo.customerType, name: '客户归类', status: false, path: RouterPath.customerType},
+        {id: CustomerBasicInfo.operateInfo, name: '经营情况', status: false, path: RouterPath.operateInfo},
+        {id: CustomerBasicInfo.personInfo, name: '人员情况', status: false, path: RouterPath.personInfo},
+        {id: CustomerBasicInfo.openAccountInfo, name: '开户情况', status: false, path: RouterPath.openAccountInfo}
     ]
 };
 

@@ -7,10 +7,10 @@ import Navigation from '../../../components/khjd/Navigation';
 
 import './index.less';
 
-class HandleBasicInfo extends React.PureComponent {
+class HandleBasicInfo extends React.Component {
     gotoInfoDetail = (info) => {
         console.log(info);
-        // this.props.history.push(info.path);
+        this.props.history.push(info.path);
     };
     saveInfo       = () => {
 

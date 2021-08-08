@@ -20,7 +20,12 @@ export const RouterPath = {
     handleBasicInfo: '/khjd/handleBasicInfo',
     handleRisk     : '/khjd/handleRisk',
     handleSurvey   : '/khjd/handleSurvey',
-    handlePhoto    : '/khjd/handlePhoto'
+    handlePhoto    : '/khjd/handlePhoto',
+    basicInfo      : '/khjd/handleBasicInfo/basicInfo',
+    customerType   : '/khjd/handleBasicInfo/customerType',
+    operateInfo    : '/khjd/handleBasicInfo/operateInfo',
+    personInfo     : '/khjd/handleBasicInfo/personInfo',
+    openAccountInfo: '/khjd/handleBasicInfo/openAccountInfo'
 };
 
 export const CustomerBasicInfo = {

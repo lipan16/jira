@@ -32,3 +32,71 @@
         background : #4f67e5;
     }
 }
+
+.basic-info-entry{
+    flex-grow        : 1;
+    overflow         : auto;
+    flex-shrink      : 1;
+    background-color : #F5F6FB;
+    font-family      : PingFangSC-Regular;
+
+    .za-cell__inner{
+        min-height : 44px;
+
+        .za-cell__body{
+            .za-cell__title{
+                padding : 12px 0;
+            }
+
+            .za-cell__content{
+                .za-date-select{
+                    .za-date-select__input{
+                        line-height : 20px;
+                        text-align  : end;
+
+                        &::after{
+                            top : 14px;
+                        }
+                    }
+                }
+
+                .za-checkbox{
+                    flex-shrink : 0;
+
+                    .za-checkbox__inner{
+                        border-radius : 50%;
+                    }
+                }
+            }
+        }
+
+        .za-cell__footer{
+            font-size : 14px;
+        }
+    }
+
+    .za-input{
+        background-color : #fff;
+        margin           : 0 16px;
+        border           : 1px solid #93938f;
+        width            : unset;
+    }
+
+    .office-address{
+        margin-bottom    : 8px;
+        padding-bottom   : 8px;
+        background-color : #fff;
+    }
+
+    .show-register-capital{
+        margin-bottom : 8px;
+        .za-select__input{
+            line-height : 20px;
+            text-align  : end;
+
+            &::after{
+                top : 14px;
+            }
+        }
+    }
+}
