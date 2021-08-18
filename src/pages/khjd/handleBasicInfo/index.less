@@ -45,7 +45,6 @@
 
         .za-cell__body{
             .za-cell__title{
-                //min-width : 8em;
                 padding : 12px 0;
             }
 
@@ -156,5 +155,69 @@
 
     .saved{
         background : #4f67e5;
+    }
+}
+
+.customer-type{
+    flex-grow        : 1;
+    overflow         : auto;
+    flex-shrink      : 1;
+    background-color : #F5F6FB;
+    font-family      : PingFangSC-Regular;
+
+    .not-input{
+        .za-select__value{
+            border : 1px solid #f00 !important;
+        }
+    }
+
+    .space{
+        height : 8px;
+    }
+
+    .za-cell__inner{
+        min-height : 44px;
+        font-size  : 14px;
+
+        .za-cell__body{
+            .za-cell__title{
+                padding   : 12px 0;
+                min-width : 8em;
+            }
+
+            .za-cell__content{
+                .za-select__input{
+                    line-height : 20px;
+                    text-align  : end;
+
+                    &::after{
+                        top : 14px;
+                    }
+                }
+
+                //.za-date-select{
+                //    .za-date-select__input{
+                //        line-height : 20px;
+                //        text-align  : end;
+                //
+                //        &::after{
+                //            top : 14px;
+                //        }
+                //    }
+                //}
+
+                //.za-checkbox{
+                //    flex-shrink : 0;
+                //
+                //    .za-checkbox__inner{
+                //        border-radius : 50%;
+                //    }
+                //}
+            }
+        }
+
+        .za-cell__footer{
+            font-size : 14px;
+        }
     }
 }

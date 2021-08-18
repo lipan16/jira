@@ -4,6 +4,7 @@ import {Cell, DateSelect, Select} from 'zarm';
 
 import './index.less';
 import Navigation                 from '../../../components/khjd/Navigation';
+import LpSwitch                   from '../../../components/khjd/Switch';
 
 class CustomerType extends React.Component {
     DepositorType       = [
@@ -34,10 +35,10 @@ class CustomerType extends React.Component {
         {value: '01', label: '境内'},
         {value: '02', label: '境外'}
     ];
-    GBCategory =[
+    GBCategory          = [
         {value: '01', label: '境内'},
         {value: '02', label: '境外'}
-    ]
+    ];
 
     state = {
         depositorType      : '', // 存款人类别
@@ -45,7 +46,12 @@ class CustomerType extends React.Component {
         registerDetail     : '', // 注册细项
         customerClass      : '', // 客户分类统计标志
         abroadCustomer     : '', // 境内外客户标志
-        gbCategory: '', // 国标行业门类
+        gbCategory         : '', // 国标行业门类
+        switch             : 0, // 0:否  1:是
+    };
+
+    updateJwjgSwitch = (value) => {
+        this.setState({switch: value});
     };
 
     render(){
@@ -65,6 +71,11 @@ class CustomerType extends React.Component {
                                 onOk={selected => this.setState({companyRegisterType: selected[0].value})}
                         />
                     </Cell>
+                    <Cell title="境内机构涉外资金专用户">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateJwjgSwitch}/>
+                    </Cell>
+
                     <Cell title="注册细项">
                         <Select dataSource={this.RegisterDetail}
                                 onOk={selected => this.setState({registerDetail: selected[0].value})}
