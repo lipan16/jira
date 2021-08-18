@@ -1,10 +1,10 @@
-import React                      from 'react';
-import {connect}                  from 'react-redux';
-import {Cell, DateSelect, Select} from 'zarm';
+import React                             from 'react';
+import {connect}                         from 'react-redux';
+import {Cell, DateSelect, Input, Select} from 'zarm';
 
 import './index.less';
-import Navigation                 from '../../../components/khjd/Navigation';
-import LpSwitch                   from '../../../components/khjd/Switch';
+import Navigation                        from '../../../components/khjd/Navigation';
+import LpSwitch                          from '../../../components/khjd/Switch';
 
 class CustomerType extends React.Component {
     DepositorType       = [
@@ -39,19 +39,44 @@ class CustomerType extends React.Component {
         {value: '01', label: '境内'},
         {value: '02', label: '境外'}
     ];
+    IndustryExchange    = [ // 所属行业（外汇）
+        {value: '01', label: '境内'},
+        {value: '02', label: '境外'}
+    ];
+    EnterpriseExchange  = [ // 企业属性（外汇
+        {value: '01', label: '境内'},
+        {value: '02', label: '境外'}
+    ];
 
     state = {
-        depositorType      : '', // 存款人类别
-        companyRegisterType: '', //企业登记注册类型
-        registerDetail     : '', // 注册细项
-        customerClass      : '', // 客户分类统计标志
-        abroadCustomer     : '', // 境内外客户标志
-        gbCategory         : '', // 国标行业门类
-        switch             : 0, // 0:否  1:是
+        depositorType       : '', // 存款人类别
+        companyRegisterType : '', // 企业登记注册类型
+        registerDetail      : '', // 注册细项
+        customerClass       : '', // 客户分类统计标志
+        abroadCustomer      : '', // 境内外客户标志
+        gbCategory          : '', // 国标行业门类
+        switchForeign       : 0, // 0:否  1:是  是否境内机构涉外资金专用户
+        switchBranch        : 0, // 0:否  1:是  为分支/附属机构
+        switchExchange      : 0, // 0:否  1:是  是否有外汇业务
+        switchSpecialZone   : 0, // 0:否  1:是  特殊经济区内企业标志
+        supervisorName      : '', // 上级主管单位名称
+        supervisorCreditCode: '', // 上级主管单位信用代码
+        supervisorID        : '', // 上级主管单位统一客户编号
+        industryExchange    : '', // 所属行业（外汇）
+        enterpriseExchange  : '' // 企业属性（外汇
     };
 
-    updateJwjgSwitch = (value) => {
-        this.setState({switch: value});
+    updateSwitchForeign     = (switchForeign) => {
+        this.setState({switchForeign});
+    };
+    updateSwitchBranch      = (switchBranch) => {
+        this.setState({switchBranch});
+    };
+    updateSwitchExchange    = (switchExchange) => {
+        this.setState({switchExchange});
+    };
+    updateSwitchSpecialZone = (switchSpecialZone) => {
+        this.setState({switchSpecialZone});
     };
 
     render(){
@@ -59,36 +84,31 @@ class CustomerType extends React.Component {
             <>
                 <Navigation title="客户归类"/>
                 <div className="customer-type">
-                    <Cell title="存款人类别"
-                          className={this.state.depositorType === '' ? 'not-input' : ''}>
+                    <Cell title="存款人类别" className={this.state.depositorType === '' ? 'not-input' : ''}>
                         <Select dataSource={this.DepositorType}
                                 onOk={selected => this.setState({depositorType: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="企业登记注册类型"
-                          className={this.state.companyRegisterType === '' ? 'not-input' : ''}>
+                    <Cell title="企业登记注册类型" className={this.state.companyRegisterType === '' ? 'not-input' : ''}>
                         <Select dataSource={this.CompanyRegisterType}
                                 onOk={selected => this.setState({companyRegisterType: selected[0].value})}
                         />
                     </Cell>
                     <Cell title="境内机构涉外资金专用户">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateJwjgSwitch}/>
+                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
                     </Cell>
-
                     <Cell title="注册细项">
                         <Select dataSource={this.RegisterDetail}
                                 onOk={selected => this.setState({registerDetail: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="客户分类统计标志"
-                          className={this.state.customerClass === '' ? 'not-input' : ''}>
+                    <Cell title="客户分类统计标志" className={this.state.customerClass === '' ? 'not-input' : ''}>
                         <Select dataSource={this.CustomerClass}
                                 onOk={selected => this.setState({customerClass: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="境内外客户标志"
-                          className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
+                    <Cell title="境内外客户标志" className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
                         <Select dataSource={this.AbroadCustomer}
                                 onOk={selected => this.setState({abroadCustomer: selected[0].value})}
                         />
@@ -96,32 +116,89 @@ class CustomerType extends React.Component {
                     <Cell title="居民标志" description="居民机构"/>
 
                     <div className="space"/>
-                    <Cell title="国标行业门类"
-                          className={this.state.gbCategory === '' ? 'not-input' : ''}>
+                    <Cell title="国标行业门类" className={this.state.gbCategory === '' ? 'not-input' : ''}>
                         <Select dataSource={this.GBCategory}
                                 onOk={selected => this.setState({gbCategory: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="国标行业大类"
-                          className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
+                    <Cell title="国标行业大类" className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
                         <Select dataSource={this.AbroadCustomer}
                                 onOk={selected => this.setState({abroadCustomer: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="国标行业中类"
-                          className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
+                    <Cell title="国标行业中类" className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
                         <Select dataSource={this.AbroadCustomer}
                                 onOk={selected => this.setState({abroadCustomer: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="国标行业小类"
-                          className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
+                    <Cell title="国标行业小类" className={this.state.abroadCustomer === '' ? 'not-input' : ''}>
                         <Select dataSource={this.AbroadCustomer}
                                 onOk={selected => this.setState({abroadCustomer: selected[0].value})}
                         />
                     </Cell>
 
                     <div className="space"/>
+                    <Cell title="是否为分支/附属机构">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switchBranch} updateSwitch={this.updateSwitchBranch}/>
+                    </Cell>
+                    {
+                        this.state.switchBranch === 1 && <>
+                            <Cell title="上级主管单位名称" className="second-level-cell">
+                                <Input clearable type="text" placeholder="请输入"
+                                       value={this.state.supervisorName}
+                                       onChange={(value) => this.setState({supervisorName: value})}
+                                />
+                            </Cell>
+                            <Cell title="上级主管单位信用代码" className="second-level-cell">
+                                <Input clearable type="text" placeholder="请输入"
+                                       value={this.state.supervisorCreditCode}
+                                       onChange={(value) => this.setState({supervisorCreditCode: value})}
+                                />
+                            </Cell>
+                            <Cell title="上级主管单位统一客户编号" className="second-level-cell">
+                                <Input clearable type="text" placeholder="请输入"
+                                       value={this.state.supervisorID}
+                                       onChange={(supervisorID) => this.setState({supervisorID})}
+                                />
+                            </Cell>
+                        </>
+                    }
+                    <Cell title="是否有外汇业务">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switchExchange} updateSwitch={this.updateSwitchExchange}/>
+                    </Cell>
+                    {
+                        this.state.switchExchange === 1 && <>
+                            <Cell title="所属行业(外汇)" className="second-level-cell">
+                                <Select dataSource={this.IndustryExchange}
+                                        onOk={selected => this.setState({industryExchange: selected[0].value})}
+                                />
+                            </Cell>
+                            <Cell title="企业属性(外汇)" className="second-level-cell">
+                                <Select dataSource={this.EnterpriseExchange}
+                                        onOk={selected => this.setState({enterpriseExchange: selected[0].value})}
+                                />
+                            </Cell>
+                        </>
+                    }
+                    <Cell title="特殊经济区内企业标志">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switchSpecialZone} updateSwitch={this.updateSwitchSpecialZone}/>
+                    </Cell>
+
+                    <div className="second-title">受益所有人识别归类</div>
+                    <div className="second-title">机构税收居民身份归类</div>
+
+                    <div className="second-title">本行归类</div>
+                    <Cell title="是否我行股东">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
+                    </Cell>
+                    <Cell title="是否关联企业">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
+                    </Cell>
                 </div>
             </>
         );
