@@ -47,36 +47,67 @@ class CustomerType extends React.Component {
         {value: '01', label: '境内'},
         {value: '02', label: '境外'}
     ];
+    CustomerCategories  = [ // 客户类别
+        {value: '01', label: '企金客户'},
+        {value: '02', label: '个体工商户'},
+        {value: '03', label: '同业客户'},
+        {value: '04', label: 'SPV客户'}
+    ];
+    CustomerType        = [ // 客户类型
+        {value: '01', label: '企金客户'},
+        {value: '02', label: '个体工商户'},
+        {value: '03', label: '同业客户'},
+        {value: '04', label: 'SPV客户'}
+    ];
 
     state = {
-        depositorType       : '', // 存款人类别
-        companyRegisterType : '', // 企业登记注册类型
-        registerDetail      : '', // 注册细项
-        customerClass       : '', // 客户分类统计标志
-        abroadCustomer      : '', // 境内外客户标志
-        gbCategory          : '', // 国标行业门类
-        switchForeign       : 0, // 0:否  1:是  是否境内机构涉外资金专用户
-        switchBranch        : 0, // 0:否  1:是  为分支/附属机构
-        switchExchange      : 0, // 0:否  1:是  是否有外汇业务
-        switchSpecialZone   : 0, // 0:否  1:是  特殊经济区内企业标志
-        supervisorName      : '', // 上级主管单位名称
-        supervisorCreditCode: '', // 上级主管单位信用代码
-        supervisorID        : '', // 上级主管单位统一客户编号
-        industryExchange    : '', // 所属行业（外汇）
-        enterpriseExchange  : '' // 企业属性（外汇
+        depositorType           : '', // 存款人类别
+        companyRegisterType     : '', // 企业登记注册类型
+        registerDetail          : '', // 注册细项
+        customerClass           : '', // 客户分类统计标志
+        abroadCustomer          : '', // 境内外客户标志
+        gbCategory              : '', // 国标行业门类
+        switchForeign           : 0, // 0:否  1:是  是否境内机构涉外资金专用户
+        switchBranch            : 0, // 0:否  1:是  为分支/附属机构
+        switchExchange          : 0, // 0:否  1:是  是否有外汇业务
+        switchSpecialZone       : 0, // 0:否  1:是  特殊经济区内企业标志
+        supervisorName          : '', // 上级主管单位名称
+        supervisorCreditCode    : '', // 上级主管单位信用代码
+        supervisorID            : '', // 上级主管单位统一客户编号
+        industryExchange        : '', // 所属行业（外汇）
+        enterpriseExchange      : '', // 企业属性（外汇
+        customerCategories      : '', // 客户类别
+        switchTypeAgency        : 1, // 是否以下类型机构
+        switchNegativeNotFinance: 0, // 是否为消极非金融机构
+        typeAgency              : '', // 类型机构
+        customerType            : '', // 客户类型
+        switchShareholder       : 0, // 是否我行股东
+        switchLinkCompany       : 0 // 是否关联企业
     };
 
-    updateSwitchForeign     = (switchForeign) => {
+    updateSwitchForeign            = (switchForeign) => {
         this.setState({switchForeign});
     };
-    updateSwitchBranch      = (switchBranch) => {
+    updateSwitchBranch             = (switchBranch) => {
         this.setState({switchBranch});
     };
-    updateSwitchExchange    = (switchExchange) => {
+    updateSwitchExchange           = (switchExchange) => {
         this.setState({switchExchange});
     };
-    updateSwitchSpecialZone = (switchSpecialZone) => {
+    updateSwitchSpecialZone        = (switchSpecialZone) => {
         this.setState({switchSpecialZone});
+    };
+    updateSwitchShareholder        = (switchShareholder) => {
+        this.setState({switchShareholder});
+    };
+    updateSwitchLinkCompany        = (switchLinkCompany) => {
+        this.setState({switchLinkCompany});
+    };
+    updateSwitchTypeAgency         = (switchTypeAgency) => {
+        this.setState({switchTypeAgency});
+    };
+    updateSwitchNegativeNotFinance = (switchNegativeNotFinance) => {
+        this.setState({switchNegativeNotFinance});
     };
 
     render(){
@@ -96,7 +127,7 @@ class CustomerType extends React.Component {
                     </Cell>
                     <Cell title="境内机构涉外资金专用户">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
+                        <LpSwitch switch={this.state.switchForeign} updateSwitch={this.updateSwitchForeign}/>
                     </Cell>
                     <Cell title="注册细项">
                         <Select dataSource={this.RegisterDetail}
@@ -188,16 +219,50 @@ class CustomerType extends React.Component {
                     </Cell>
 
                     <div className="second-title">受益所有人识别归类</div>
+                    <Cell title="客户类别" className={this.state.customerCategories === '' ? 'not-input' : ''}>
+                        <Select dataSource={this.CustomerCategories}
+                                onOk={selected => this.setState({customerCategories: selected[0].value})}
+                        />
+                    </Cell>
+
                     <div className="second-title">机构税收居民身份归类</div>
+                    <Cell title="是否以下类型机构">
+                        <div style={{'flexGrow': 1}}/>
+                        <LpSwitch switch={this.state.switchTypeAgency} updateSwitch={this.updateSwitchTypeAgency}/>
+                    </Cell>
+                    {
+                        this.state.switchTypeAgency === 1 ? <>
+                            <div>
+                                <div>政府机构</div>
+                            </div>
+                        </> : <>
+                            <Cell title="是否为消极非金融机构">
+                                <div style={{'flexGrow': 1}}/>
+                                <LpSwitch switch={this.state.switchNegativeNotFinance}
+                                          updateSwitch={this.updateSwitchNegativeNotFinance}/>
+                            </Cell>
+                            {
+                                this.state.switchNegativeNotFinance === 1 && <div>
+                                    <img/>
+                                    请填写《机构控制人税收居民身份声明文件》
+                                </div>
+                            }
+                        </>
+                    }
 
                     <div className="second-title">本行归类</div>
+                    <Cell title="客户类型">
+                        <Select dataSource={this.CustomerType}
+                                onOk={selected => this.setState({customerType: selected[0].value})}
+                        />
+                    </Cell>
                     <Cell title="是否我行股东">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
+                        <LpSwitch switch={this.state.switchShareholder} updateSwitch={this.updateSwitchShareholder}/>
                     </Cell>
                     <Cell title="是否关联企业">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switch} updateSwitch={this.updateSwitchForeign}/>
+                        <LpSwitch switch={this.state.switchLinkCompany} updateSwitch={this.updateSwitchLinkCompany}/>
                     </Cell>
                 </div>
             </>
