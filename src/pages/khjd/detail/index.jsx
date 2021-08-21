@@ -2,6 +2,7 @@ import React             from 'react';
 import {connect}         from 'react-redux';
 import {withRouter}      from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard/lib/Component';
+import {Toast}           from 'zarm';
 
 import './index.less';
 import {dataMasking}     from '../../../utils/func';
@@ -57,8 +58,9 @@ class Detail extends React.Component {
                                 <span onClick={() => this.showMasking(!telephoneMasking)}>
                                     {dataMasking('12345678998', telephoneMasking ? 'phone' : '')}
                                 </span>
-                                <CopyToClipboard text="1234567899111118">
-                                    <img className="copy-img" src={copyImg}/>
+                                <CopyToClipboard text="1234567899111118"
+                                                 onCopy={() => Toast.show({content: '已复制', stayTime: 1000})}>
+                                    <img className="copy-img" src={copyImg} alt=""/>
                                 </CopyToClipboard>
                             </div>
                         </div>
