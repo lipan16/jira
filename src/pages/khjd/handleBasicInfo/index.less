@@ -180,59 +180,72 @@
         background-color : #f1efef;
     }
 
-    .za-cell__inner{
-        min-height : 44px;
-        font-size  : 14px;
+    .za-cell{
 
-        .za-cell__body{
-            .za-cell__title{
-                padding   : 12px 0;
-                min-width : 12em;
+
+        .za-cell__inner{
+            min-height : 44px;
+            font-size  : 14px;
+
+            .za-cell__body{
+                .za-cell__title{
+                    padding   : 12px 0;
+                    min-width : 12em;
+                }
+
+                .za-cell__content{
+                    .za-select__input{
+                        line-height : 20px;
+                        text-align  : end;
+
+                        //.za-select__value{
+                        //    text-align : justify;
+                        //    display    : inline-block;
+                        //}
+
+                        &::after{
+                            top : 14px;
+                        }
+                    }
+
+                    .za-input{
+                        padding   : 11px 0;
+                        font-size : 14px;
+
+                        > input{
+                            text-align    : end;
+                            padding-right : 20px;
+                        }
+                    }
+
+                    //.za-date-select{
+                    //    .za-date-select__input{
+                    //        line-height : 20px;
+                    //        text-align  : end;
+                    //
+                    //        &::after{
+                    //            top : 14px;
+                    //        }
+                    //    }
+                    //}
+
+                    //.za-checkbox{
+                    //    flex-shrink : 0;
+                    //
+                    //    .za-checkbox__inner{
+                    //        border-radius : 50%;
+                    //    }
+                    //}
+                }
             }
 
-            .za-cell__content{
-                .za-select__input{
-                    line-height : 20px;
-                    text-align  : end;
-
-                    &::after{
-                        top : 14px;
-                    }
-                }
-
-                .za-input{
-                    padding   : 11px 0;
-                    font-size : 14px;
-
-                    > input{
-                        text-align    : end;
-                        padding-right : 20px;
-                    }
-                }
-
-                //.za-date-select{
-                //    .za-date-select__input{
-                //        line-height : 20px;
-                //        text-align  : end;
-                //
-                //        &::after{
-                //            top : 14px;
-                //        }
-                //    }
-                //}
-
-                //.za-checkbox{
-                //    flex-shrink : 0;
-                //
-                //    .za-checkbox__inner{
-                //        border-radius : 50%;
-                //    }
-                //}
+            .za-cell__footer{
+                font-size : 14px;
             }
         }
 
-        .za-cell__footer{
-            font-size : 14px;
+        &::after{
+            display : none;
         }
     }
 
@@ -241,5 +254,47 @@
         height       : 44px;
         padding-left : 20px;
         line-height  : 44px;
+    }
+
+    .agency-type{
+        background-color : #fff;
+        padding          : 6px 0;
+        display          : flex;
+        flex-flow        : row wrap;
+        align-content    : flex-start;
+
+        > div{
+            font-size        : 14px;
+            margin           : 4px;
+            padding          : 4px 24px;
+            background-color : #F5F6FB;
+            border           : 1px solid #F5F6FB;
+            border-radius    : 4px;
+            flex-grow        : 1;
+            text-align       : center;
+        }
+
+        .select{
+            border : 1px solid #2a82e4;
+            color  : #2a82e4;
+        }
+    }
+
+    .warning{
+        display          : flex;
+        padding          : 10px 0;
+        background-color : #fff;
+
+        color            : #ffa500;
+        font-family      : PingFangSC-Regular;
+        font-size        : 14px;
+
+        > img{
+            margin-left  : 8px;
+            margin-right : 8px;
+            height       : 16px;
+            width        : 16px;
+            display      : block;
+        }
     }
 }

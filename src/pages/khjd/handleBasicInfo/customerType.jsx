@@ -1,10 +1,11 @@
-import React                             from 'react';
-import {connect}                         from 'react-redux';
-import {Cell, DateSelect, Input, Select} from 'zarm';
+import React                 from 'react';
+import {connect}             from 'react-redux';
+import {Cell, Input, Select} from 'zarm';
 
 import './index.less';
-import Navigation                        from '../../../components/khjd/Navigation';
-import LpSwitch                          from '../../../components/khjd/Switch';
+import Navigation            from '../../../components/khjd/Navigation';
+import LpSwitch              from '../../../components/khjd/Switch';
+import warnImg               from '../../../assets/warn.svg';
 
 class CustomerType extends React.Component {
     DepositorType       = [
@@ -59,6 +60,15 @@ class CustomerType extends React.Component {
         {value: '03', label: '同业客户'},
         {value: '04', label: 'SPV客户'}
     ];
+    AgencyType          = [
+        '政府机构', '国际组织', '中央银行', '在证券市场上交易的公司及其关联机构', '金融机构', '事业单位',
+        '武警部队', '军队', '居委会', '村委会', '社区委员会', '社会团体'
+    ];
+    AgencyTaxResidency  = [ // 机构税收居民身份
+        {value: '01', label: '仅为中国内地税收居民'},
+        {value: '02', label: '仅为非居民'},
+        {value: '03', label: '既是中国内地税收居民，又是其他国家(地区)税收居民'}
+    ];
 
     state = {
         depositorType           : '', // 存款人类别
@@ -78,8 +88,9 @@ class CustomerType extends React.Component {
         enterpriseExchange      : '', // 企业属性（外汇
         customerCategories      : '', // 客户类别
         switchTypeAgency        : 1, // 是否以下类型机构
+        typeAgency              : [], // 选择的类型机构
         switchNegativeNotFinance: 0, // 是否为消极非金融机构
-        typeAgency              : '', // 类型机构
+        agencyTaxResidency      : '', //机构税收居民身份
         customerType            : '', // 客户类型
         switchShareholder       : 0, // 是否我行股东
         switchLinkCompany       : 0 // 是否关联企业
@@ -110,6 +121,18 @@ class CustomerType extends React.Component {
         this.setState({switchNegativeNotFinance});
     };
 
+    selectTypeAgency = (typeAgency) => { // 选中类型机构
+        let ta    = this.state.typeAgency;
+        let index = ta.indexOf(typeAgency);
+
+        if(index < 0){
+            ta.push(typeAgency);
+        }else{
+            ta.splice(index, 1);
+        }
+        this.setState({typeAgency: ta});
+    };
+
     render(){
         return (
             <>
@@ -120,7 +143,8 @@ class CustomerType extends React.Component {
                                 onOk={selected => this.setState({depositorType: selected[0].value})}
                         />
                     </Cell>
-                    <Cell title="企业登记注册类型" className={this.state.companyRegisterType === '' ? 'not-input' : ''}>
+                    <Cell title="企业登记注册类型"
+                          className={this.state.companyRegisterType === '' ? 'not-input' : ''}>
                         <Select dataSource={this.CompanyRegisterType}
                                 onOk={selected => this.setState({companyRegisterType: selected[0].value})}
                         />
@@ -197,25 +221,29 @@ class CustomerType extends React.Component {
                     }
                     <Cell title="是否有外汇业务">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switchExchange} updateSwitch={this.updateSwitchExchange}/>
+                        <LpSwitch switch={this.state.switchExchange}
+                                  updateSwitch={this.updateSwitchExchange}/>
                     </Cell>
                     {
                         this.state.switchExchange === 1 && <>
                             <Cell title="所属行业(外汇)" className="second-level-cell">
                                 <Select dataSource={this.IndustryExchange}
-                                        onOk={selected => this.setState({industryExchange: selected[0].value})}
+                                        onOk={selected =>
+                                            this.setState({industryExchange: selected[0].value})}
                                 />
                             </Cell>
                             <Cell title="企业属性(外汇)" className="second-level-cell">
                                 <Select dataSource={this.EnterpriseExchange}
-                                        onOk={selected => this.setState({enterpriseExchange: selected[0].value})}
+                                        onOk={selected =>
+                                            this.setState({enterpriseExchange: selected[0].value})}
                                 />
                             </Cell>
                         </>
                     }
                     <Cell title="特殊经济区内企业标志">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switchSpecialZone} updateSwitch={this.updateSwitchSpecialZone}/>
+                        <LpSwitch switch={this.state.switchSpecialZone}
+                                  updateSwitch={this.updateSwitchSpecialZone}/>
                     </Cell>
 
                     <div className="second-title">受益所有人识别归类</div>
@@ -228,12 +256,21 @@ class CustomerType extends React.Component {
                     <div className="second-title">机构税收居民身份归类</div>
                     <Cell title="是否以下类型机构">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switchTypeAgency} updateSwitch={this.updateSwitchTypeAgency}/>
+                        <LpSwitch switch={this.state.switchTypeAgency}
+                                  updateSwitch={this.updateSwitchTypeAgency}/>
                     </Cell>
                     {
                         this.state.switchTypeAgency === 1 ? <>
-                            <div>
-                                <div>政府机构</div>
+                            <div className="agency-type">
+                                {
+                                    this.AgencyType.map((item, index) =>
+                                        <div key={index}
+                                             className={this.state.typeAgency.includes(index) ? 'select' : ''}
+                                             onClick={() => this.selectTypeAgency(index)}>
+                                            {item}
+                                        </div>
+                                    )
+                                }
                             </div>
                         </> : <>
                             <Cell title="是否为消极非金融机构">
@@ -242,9 +279,20 @@ class CustomerType extends React.Component {
                                           updateSwitch={this.updateSwitchNegativeNotFinance}/>
                             </Cell>
                             {
-                                this.state.switchNegativeNotFinance === 1 && <div>
-                                    <img/>
+                                this.state.switchNegativeNotFinance === 1 && <div className="warning">
+                                    <img src={warnImg} alt=""/>
                                     请填写《机构控制人税收居民身份声明文件》
+                                </div>
+                            }
+                            <Cell title="机构税收居民身份">
+                                <Select dataSource={this.AgencyTaxResidency}
+                                        onOk={selected => this.setState({agencyTaxResidency: selected[0].value})}
+                                />
+                            </Cell>
+                            {
+                                this.state.agencyTaxResidency === '01' || <div className="warning">
+                                    <img src={warnImg} alt=""/>
+                                    请填写《机构税收居民身份声明文件》
                                 </div>
                             }
                         </>
@@ -258,11 +306,13 @@ class CustomerType extends React.Component {
                     </Cell>
                     <Cell title="是否我行股东">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switchShareholder} updateSwitch={this.updateSwitchShareholder}/>
+                        <LpSwitch switch={this.state.switchShareholder}
+                                  updateSwitch={this.updateSwitchShareholder}/>
                     </Cell>
                     <Cell title="是否关联企业">
                         <div style={{'flexGrow': 1}}/>
-                        <LpSwitch switch={this.state.switchLinkCompany} updateSwitch={this.updateSwitchLinkCompany}/>
+                        <LpSwitch switch={this.state.switchLinkCompany}
+                                  updateSwitch={this.updateSwitchLinkCompany}/>
                     </Cell>
                 </div>
             </>
