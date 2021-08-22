@@ -1,11 +1,10 @@
 import React                 from 'react';
+import {connect}             from 'react-redux';
+import {Cell, Input, Select} from 'zarm';
 
 import './index.less';
-import {connect}             from 'react-redux';
 import Navigation            from '../../../components/khjd/Navigation';
-import {Cell, Input, Select} from 'zarm';
-import LpSwitch              from '../../../components/khjd/Switch';
-import warnImg               from '../../../assets/warn.svg';
+
 
 class OperateInfo extends React.Component {
     OperateInfo = [ //经营情况

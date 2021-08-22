@@ -96,32 +96,32 @@ class CustomerType extends React.Component {
         switchLinkCompany       : 0 // 是否关联企业
     };
 
-    updateSwitchForeign            = (switchForeign) => {
+    updateSwitchForeign            = switchForeign => {
         this.setState({switchForeign});
     };
-    updateSwitchBranch             = (switchBranch) => {
+    updateSwitchBranch             = switchBranch => {
         this.setState({switchBranch});
     };
-    updateSwitchExchange           = (switchExchange) => {
+    updateSwitchExchange           = switchExchange => {
         this.setState({switchExchange});
     };
-    updateSwitchSpecialZone        = (switchSpecialZone) => {
+    updateSwitchSpecialZone        = switchSpecialZone => {
         this.setState({switchSpecialZone});
     };
-    updateSwitchShareholder        = (switchShareholder) => {
+    updateSwitchShareholder        = switchShareholder => {
         this.setState({switchShareholder});
     };
-    updateSwitchLinkCompany        = (switchLinkCompany) => {
+    updateSwitchLinkCompany        = switchLinkCompany => {
         this.setState({switchLinkCompany});
     };
-    updateSwitchTypeAgency         = (switchTypeAgency) => {
+    updateSwitchTypeAgency         = switchTypeAgency => {
         this.setState({switchTypeAgency});
     };
-    updateSwitchNegativeNotFinance = (switchNegativeNotFinance) => {
+    updateSwitchNegativeNotFinance = switchNegativeNotFinance => {
         this.setState({switchNegativeNotFinance});
     };
 
-    selectTypeAgency = (typeAgency) => { // 选中类型机构
+    selectTypeAgency = typeAgency => { // 选中类型机构
         let ta    = this.state.typeAgency;
         let index = ta.indexOf(typeAgency);
 
