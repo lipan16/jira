@@ -25,7 +25,6 @@
         font-size     : 16px;
         background    : #abafb0;
         color         : #fff;
-
     }
 
     .saved{
@@ -40,38 +39,40 @@
     background-color : #F5F6FB;
     font-family      : PingFangSC-Regular;
 
-    .za-cell__inner{
-        min-height : 44px;
+    .za-cell{
+        .za-cell__inner{
+            min-height : 44px;
 
-        .za-cell__body{
-            .za-cell__title{
-                padding : 12px 0;
-            }
+            .za-cell__body{
+                .za-cell__title{
+                    padding : 12px 0;
+                }
 
-            .za-cell__content{
-                .za-date-select{
-                    .za-date-select__input{
-                        line-height : 20px;
-                        text-align  : end;
+                .za-cell__content{
+                    .za-date-select{
+                        .za-date-select__input{
+                            line-height : 20px;
+                            text-align  : end;
 
-                        &::after{
-                            top : 14px;
+                            &::after{
+                                top : 14px;
+                            }
+                        }
+                    }
+
+                    .za-checkbox{
+                        flex-shrink : 0;
+
+                        .za-checkbox__inner{
+                            border-radius : 50%;
                         }
                     }
                 }
-
-                .za-checkbox{
-                    flex-shrink : 0;
-
-                    .za-checkbox__inner{
-                        border-radius : 50%;
-                    }
-                }
             }
-        }
 
-        .za-cell__footer{
-            font-size : 14px;
+            .za-cell__footer{
+                font-size : 14px;
+            }
         }
     }
 
@@ -181,8 +182,6 @@
     }
 
     .za-cell{
-
-
         .za-cell__inner{
             min-height : 44px;
             font-size  : 14px;
@@ -217,25 +216,6 @@
                             padding-right : 20px;
                         }
                     }
-
-                    //.za-date-select{
-                    //    .za-date-select__input{
-                    //        line-height : 20px;
-                    //        text-align  : end;
-                    //
-                    //        &::after{
-                    //            top : 14px;
-                    //        }
-                    //    }
-                    //}
-
-                    //.za-checkbox{
-                    //    flex-shrink : 0;
-                    //
-                    //    .za-checkbox__inner{
-                    //        border-radius : 50%;
-                    //    }
-                    //}
                 }
             }
 
@@ -297,4 +277,31 @@
             display      : block;
         }
     }
+
+    .operate-time{
+        background-color : #fff;
+        padding-left     : 16px;
+        font-size        : 12px;
+
+        > span{
+            margin-left : 16px;
+            color       : blue;
+        }
+    }
+
+    .unsaved{
+        margin        : 16px;
+        line-height   : 40px;
+        text-align    : center;
+        border-radius : 5px;
+        font-size     : 16px;
+        background    : #abafb0;
+        color         : #fff;
+
+    }
+
+    .saved{
+        background : #4f67e5;
+    }
 }
+

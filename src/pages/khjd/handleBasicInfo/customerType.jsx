@@ -134,6 +134,7 @@ class CustomerType extends React.Component {
     };
 
     render(){
+        let savedAble = true;
         return (
             <>
                 <Navigation title="客户归类"/>
@@ -314,6 +315,10 @@ class CustomerType extends React.Component {
                         <LpSwitch switch={this.state.switchLinkCompany}
                                   updateSwitch={this.updateSwitchLinkCompany}/>
                     </Cell>
+
+                    <div className={['unsaved', savedAble ? 'saved' : ''].join(' ')}
+                         onClick={() => savedAble && this.saveBasicInfo()}>保存
+                    </div>
                 </div>
             </>
         );
