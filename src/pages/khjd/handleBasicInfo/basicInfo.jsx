@@ -6,14 +6,13 @@ import {Cell, Checkbox, DateSelect, Input, Select, Switch} from 'zarm';
 import './index.less';
 import Navigation                                          from '../../../components/khjd/Navigation';
 
-
 class BasicInfo extends React.Component {
     dataSource = [
         {label: '人民币', value: 'Basic Info'},
         {label: '美元', value: 'Basic Info1'}
     ];
     state      = {
-        effectiveDate      : '', // 证件生效日期
+        effectiveDate      : '2021-09-01', // 证件生效日期
         expiryDate         : '', // 证件到期日期
         longEffectiveDate  : false, // 证件是否长期有效
         officeAddress      : '', // 办公地址
