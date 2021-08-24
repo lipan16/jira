@@ -1,9 +1,10 @@
-import React from 'react';
+import React                          from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import routes from './router';
-import {ConfigProvider} from 'zarm';
+import {ConfigProvider}               from 'zarm';
 import 'zarm/dist/zarm.css';
-import About from './components/test/about';
+
+import routes from './router';
+import About  from './components/test/about';
 
 function App(){
     return (

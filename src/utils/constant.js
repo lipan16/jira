@@ -35,3 +35,27 @@ export const CustomerBasicInfo = {
     personInfo     : 'personInfo',
     openAccountInfo: 'openAccountInfo'
 };
+
+
+export const PublicKey = '-----BEGIN PUBLIC KEY-----\n' +
+    'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC03xBXfETom+yyJYeFJQDU2nP4\n' +
+    'b7lgul0ygqcDck66SW1/Yognxdil2aLS1T2DF9wxktWeaVRirRNfWPA/XZPBFUBS\n' +
+    'z+uLLb/l34tiY4SVXh44wy0qUVYyKXNL1RyrXHTdj6gLHHU24cJvlOhduYzoPfgS\n' +
+    'LokIPo4iUxYDou8SbwIDAQAB\n' +
+    '-----END PUBLIC KEY-----';
+
+export const PrivateKey = '-----BEGIN RSA PRIVATE KEY-----\n' +
+    'MIICXQIBAAKBgQC03xBXfETom+yyJYeFJQDU2nP4b7lgul0ygqcDck66SW1/Yogn\n' +
+    'xdil2aLS1T2DF9wxktWeaVRirRNfWPA/XZPBFUBSz+uLLb/l34tiY4SVXh44wy0q\n' +
+    'UVYyKXNL1RyrXHTdj6gLHHU24cJvlOhduYzoPfgSLokIPo4iUxYDou8SbwIDAQAB\n' +
+    'AoGBAJMCFtM0owF48mpdTIfwanuWztmnXUH8V5GdVcfcWZbZ5ZC68jV5fjxW5xt7\n' +
+    'zFJHy2XTlaL6s2a8i9lcfXDTSyoueBf6GxPumsYbsGNgtyUsT4ZRprgGxtoCwx7Z\n' +
+    'bvvhydik/1PdPbmQZcN4mPnrAkGR4Stibzg8zIPZm6um7G65AkEA6YDbLAI3IgXI\n' +
+    '1xFvEDkAZxBMhwzKqTHPnhkVMdxti90V1a0PljjIRRs40dUxLwXr4MGZVNIeA9Kp\n' +
+    '1sB6k1EO1QJBAMZMFo3D5i//xwXqzduDaxQqZ6CjdBRvkNyFGVoq0J1PQr20hdK/\n' +
+    'y3e2fiS5tBRRkcMXVTdNn1QDT+TQRiT/pjMCQA/kAQZhsDbUhfJ88T39YxWgelTG\n' +
+    'fhQ9m496zYJzKdFW3mGIQYNLofVyAM/m3k4A7SiChFjNY9WGxKAkwTK9VXECQHzx\n' +
+    'yGw++TVZRsAVuOwNnFSye2UeWK/ftDkerGDCBXx5SqZZrtCiBMRDeqwNTshWtS9l\n' +
+    '7k3QXQoEpDyadvgtFT0CQQCS02QuzGpy5/eAJtn+TYnRVRsdbViC6QEQaIhoCyg1\n' +
+    'oFZ1SCyQQrSlHR0jU073QbCsfg2GL3WvN/UVMFk7rWQU\n' +
+    '-----END RSA PRIVATE KEY-----';
