@@ -1,11 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React      from 'react';
+import ReactDOM   from 'react-dom';
 import {Provider} from 'react-redux';
-import App from './App';
-import store from './redux/store';
+import App        from './App';
+import store      from './redux/store';
 import './main.less';
 import './utils/rem';
-
 
 ReactDOM.render(
     //开启严格模式
