@@ -1,9 +1,11 @@
+// 返回
 export function pageBack(param){
     return (event) => {
         history.go(param);
     };
 }
 
+// 数据前端脱敏
 export function dataMasking(data = '', type = 'default'){
     switch(type){
         case 'phone':
@@ -23,4 +25,19 @@ export function dataMasking(data = '', type = 'default'){
         default:
             return data;
     }
+}
+
+// 通过对象id获取其在数组中的索引
+export function getIndexById(array, id){
+    for(let i = array.length - 1; i >= 0; i--){
+        if(array[i].id === id){
+            return i;
+        }
+    }
+    return -1;
+}
+
+// 判断对象是否为空
+export function objIsEmpty(obj){
+    return Reflect.ownKeys(obj).length === 0 && obj.constructor === Object;
 }

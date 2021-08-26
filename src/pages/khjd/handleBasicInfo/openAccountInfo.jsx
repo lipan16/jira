@@ -4,8 +4,8 @@ import {connect}                    from 'react-redux';
 import './index.less';
 import Navigation                   from '../../../components/khjd/Navigation';
 import {Cell, Input, Modal, Select} from 'zarm';
-import LpSwitch                     from '../../../components/khjd/Switch';
-import {getIndexByValue}            from '../../../utils/func';
+import LpSwitch       from '../../../components/khjd/Switch';
+import {getIndexById} from '../../../utils/func';
 
 
 class AccountManager extends React.Component {
@@ -106,7 +106,7 @@ class OpenAccountInfo extends React.Component {
             content: '是否确认删除？',
             onOk   : () => {
                 let accountManager = this.state.accountManager;
-                let index          = getIndexByValue(accountManager, id);
+                let index          = getIndexById(accountManager, id);
                 accountManager.splice(index, 1);
                 this.setState({accountManager});
             }
@@ -114,7 +114,7 @@ class OpenAccountInfo extends React.Component {
     };
     updateAccount     = (id, value) => {
         let accountManager    = this.state.accountManager;
-        let index             = getIndexByValue(accountManager, id);
+        let index             = getIndexById(accountManager, id);
         accountManager[index] = value;
         this.setState({accountManager});
     };
