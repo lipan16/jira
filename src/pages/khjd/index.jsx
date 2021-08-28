@@ -5,10 +5,8 @@ import Navigation   from '@/components/khjd/Navigation';
 import Header       from '../../components/khjd/Header';
 import ListItem     from '../../components/khjd/ListItem';
 import './index.less';
-import Api          from '../../api/API';
 
 function Khjd(){
-
 
     return (
         <div className="flex-list khjd">
