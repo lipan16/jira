@@ -14,7 +14,7 @@ function Home(props){
         Api.login().then(res => {
             console.log(res);
         }).catch(error => {
-            history.push(RouterPath.about);
+            // history.push(RouterPath.about);
             console.log(error);
         });
     }, []);

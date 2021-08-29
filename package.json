@@ -3,10 +3,6 @@
   "description": "react learn",
   "author": "lipan",
   "repository": "https://github.com/lipan16/jira.git",
-  "keywords": [
-    "react",
-    "react-router-dom"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "encryptlong": "^3.1.4",
     "jsencrypt": "^3.2.0",
     "numeral": "^2.0.6",
     "react": "^17.0.0",

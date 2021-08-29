@@ -4,6 +4,7 @@ react-fast-scroll
 khjd: 开户尽调
 
 axios: 网络请求
+encryptlong: jsencrypt 长文本加密
 jsencrypt: 网络请求加密
 numeral: 数字格式化
 react-redux: 
