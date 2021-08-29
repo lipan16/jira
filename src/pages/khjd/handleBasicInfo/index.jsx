@@ -9,7 +9,7 @@ import './index.less';
 
 class HandleBasicInfo extends React.Component {
     gotoInfoDetail = (info) => {
-        console.log(info);
+        console.log('gotoInfoDetail', info);
         this.props.history.push(info.path);
     };
     saveInfo       = () => {

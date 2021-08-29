@@ -40,8 +40,6 @@ class TaskHandle extends React.Component {
             Toast.show('请先录入客户基本信息');
             return;
         }
-        console.log(task);
-        console.log(this.props.history);
         this.props.history.push(task.path);
     };
 
