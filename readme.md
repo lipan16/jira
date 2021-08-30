@@ -1,7 +1,7 @@
 better-scroll
 react-fast-scroll
 
-khjd: 开户尽调
+khjd
 
 axios: 网络请求
 encryptlong: jsencrypt 长文本加密
