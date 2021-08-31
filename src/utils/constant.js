@@ -5,27 +5,32 @@ export const ADD = 'add';
 export const DEC = 'dec';
 
 // khjd相关action对象的type类型
-export const COMPLETELIST = 'complete_list';
-export const PENDINGLIST  = 'pending_list';
-export const KHJDTASK     = 'khjd_task';
-
+export const COMPLETELIST    = 'complete_list'; // 已办列表
+export const PENDINGLIST     = 'pending_list'; // 待办列表
+export const KHJDTASK        = 'khjd_task'; // 任务详情
+export const BASICINFO       = 'save_basic_info'; // 基本信息
+export const CUSTOMERTYPE    = 'save_customer_type'; // 客户归类
+export const OPERATEINFO     = 'save_operate_info'; // 经营情况
+export const PERSONINFO      = 'save_person_info'; // 人员情况
+export const OPENACCOUNTINFO = 'save_open_account_info'; // 开户情况
 
 // router路由器相关的地址常量
 export const RouterPath = {
-    index          : '/',
-    about          : '/about',
-    khjdDetail     : '/khjd/detail',
-    taskHandle     : '/khjd/taskHandle',
-    taskTransfer   : '/khjd/taskTransfer',
-    handleBasicInfo: '/khjd/handleBasicInfo',
-    handleRisk     : '/khjd/handleRisk',
-    handleSurvey   : '/khjd/handleSurvey',
-    handlePhoto    : '/khjd/handlePhoto',
-    basicInfo      : '/khjd/handleBasicInfo/basicInfo',
-    customerType   : '/khjd/handleBasicInfo/customerType',
-    operateInfo    : '/khjd/handleBasicInfo/operateInfo',
-    personInfo     : '/khjd/handleBasicInfo/personInfo',
-    openAccountInfo: '/khjd/handleBasicInfo/openAccountInfo'
+    index            : '/',
+    about            : '/about',
+    khjdDetail       : '/khjd/detail',
+    taskHandle       : '/khjd/taskHandle',
+    taskTransfer     : '/khjd/taskTransfer',
+    handleBasicInfo  : '/khjd/handleBasicInfo',
+    handleRisk       : '/khjd/handleRisk',
+    handleSurvey     : '/khjd/handleSurvey',
+    handlePhoto      : '/khjd/handlePhoto',
+    basicInfo        : '/khjd/handleBasicInfo/basicInfo',
+    customerType     : '/khjd/handleBasicInfo/customerType',
+    operateInfo      : '/khjd/handleBasicInfo/operateInfo',
+    personInfo       : '/khjd/handleBasicInfo/personInfo',
+    openAccountInfo  : '/khjd/handleBasicInfo/openAccountInfo',
+    basicInfoAreaCode: '/khjd/handleBasicInfo/basicInfo/basicInfoAreaCode'
 };
 
 export const CustomerBasicInfo = {
@@ -36,6 +41,45 @@ export const CustomerBasicInfo = {
     openAccountInfo: 'openAccountInfo'
 };
 
+export const AreaCode = [ // 行政区域代码
+    {
+        value   : '1',
+        label   : '北京市',
+        children: [
+            {
+                value: '11', label: '海淀区', children: [
+                    {value: '112', label: '112人民币'},
+                    {value: '113', label: '113美元'}
+                ]
+            },
+            {
+                value: '12', label: '西城区', children: [
+                    {value: '122', label: '122人民币'},
+                    {value: '123', label: '123美元'}
+                ]
+            }
+        ]
+    },
+    {
+        value   : '2',
+        label   : '上海市',
+        children: [
+            {value: '20', label: '杨浦区'},
+            {
+                value: '21', label: '杨浦区', children: [
+                    {value: '212', label: '人212民币'},
+                    {value: '213', label: '美213元'}
+                ]
+            },
+            {
+                value: '22', label: '静安区', children: [
+                    {value: '222', label: '人民币222'},
+                    {value: '223', label: '美元223'}
+                ]
+            }
+        ]
+    }
+];
 
 export const PublicKey = '-----BEGIN PUBLIC KEY-----\n' +
     'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC03xBXfETom+yyJYeFJQDU2nP4\n' +

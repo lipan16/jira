@@ -1,18 +1,19 @@
-import Home            from '../pages/Home';
-import {RouterPath}    from '../utils/constant';
-import About           from '@/components/test/about';
-import khjdDetail      from '@/pages/khjd/detail/index';
-import taskHandle      from '@/pages/khjd/taskHandle/index';
-import taskTransfer    from '@/pages/khjd/taskTransfer/index';
-import HandleBasicInfo from '../pages/khjd/handleBasicInfo';
-import HandleRisk      from '../pages/khjd/handleRisk';
-import HandleSurvey    from '../pages/khjd/handleSurvey';
-import HandlePhoto     from '../pages/khjd/handlePhoto';
-import BasicInfo       from '../pages/khjd/handleBasicInfo/basicInfo';
-import CustomerType    from '../pages/khjd/handleBasicInfo/customerType';
-import OperateInfo     from '../pages/khjd/handleBasicInfo/operateInfo';
-import PersonInfo      from '../pages/khjd/handleBasicInfo/personInfo';
-import OpenAccountInfo from '../pages/khjd/handleBasicInfo/openAccountInfo';
+import Home              from '../pages/Home';
+import {RouterPath}      from '../utils/constant';
+import About             from '@/components/test/about';
+import khjdDetail        from '@/pages/khjd/detail/index';
+import taskHandle        from '@/pages/khjd/taskHandle/index';
+import taskTransfer      from '@/pages/khjd/taskTransfer/index';
+import HandleBasicInfo   from '../pages/khjd/handleBasicInfo';
+import HandleRisk        from '../pages/khjd/handleRisk';
+import HandleSurvey      from '../pages/khjd/handleSurvey';
+import HandlePhoto       from '../pages/khjd/handlePhoto';
+import BasicInfo         from '../pages/khjd/handleBasicInfo/basicInfo';
+import CustomerType      from '../pages/khjd/handleBasicInfo/customerType';
+import OperateInfo       from '../pages/khjd/handleBasicInfo/operateInfo';
+import PersonInfo        from '../pages/khjd/handleBasicInfo/personInfo';
+import OpenAccountInfo   from '../pages/khjd/handleBasicInfo/openAccountInfo';
+import BasicInfoAreaCode from '../pages/khjd/handleBasicInfo/basicInfoAreaCode';
 
 const routes = [
     {
@@ -70,6 +71,10 @@ const routes = [
     {
         path     : RouterPath.openAccountInfo,
         component: OpenAccountInfo
+    },
+    {
+        path     : RouterPath.basicInfoAreaCode,
+        component: BasicInfoAreaCode
     }
 ];
 

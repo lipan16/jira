@@ -8,7 +8,7 @@ import {
     PENDINGLIST,
     KHJDTASK,
     RouterPath,
-    CustomerBasicInfo
+    CustomerBasicInfo, BASICINFO, CUSTOMERTYPE, OPENACCOUNTINFO, PERSONINFO, OPERATEINFO
 }            from '../../utils/constant';
 
 const initState = {
@@ -21,21 +21,19 @@ const initState = {
         {src: src3, name: '尽职调查情况录入', status: false, path: RouterPath.handleSurvey},
         {src: src4, name: '尽职调查照片拍摄', status: false, path: RouterPath.handlePhoto}
     ],
-    // customerBasicInfo: { // 客户基本信息
-    //     basicInfo      : {}, // 基本信息
-    //     customerType   : {}, // 客户归类
-    //     operateInfo    : {}, // 经营情况
-    //     personInfo     : {}, // 人员情况
-    //     openAccountInfo: {}, // 开户情况
-    //     status         : [false, false, false, false, false] // 客户基本信息保存情况
-    // },
+
     customerBasicInfo: [ // 客户基本信息
-        {id: CustomerBasicInfo.basicInfo, name: '基本信息', status: true, path: RouterPath.basicInfo},
+        {id: CustomerBasicInfo.basicInfo, name: '基本信息', status: false, path: RouterPath.basicInfo},
         {id: CustomerBasicInfo.customerType, name: '客户归类', status: false, path: RouterPath.customerType},
         {id: CustomerBasicInfo.operateInfo, name: '经营情况', status: false, path: RouterPath.operateInfo},
         {id: CustomerBasicInfo.personInfo, name: '人员情况', status: false, path: RouterPath.personInfo},
         {id: CustomerBasicInfo.openAccountInfo, name: '开户情况', status: false, path: RouterPath.openAccountInfo}
-    ]
+    ],
+    basicInfo        : {}, // 基本信息
+    customerType     : {}, // 客户归类
+    operateInfo      : {}, // 经营情况
+    personInfo       : {}, // 人员情况
+    openAccountInfo  : {} // 开户情况
 };
 
 /**
@@ -58,6 +56,26 @@ export default function khjdReducer(prevState = initState, action){
             return state;
         case KHJDTASK:
             state.khjdTask = data;
+            return state;
+        case BASICINFO:
+            state.basicInfo                   = data;
+            state.customerBasicInfo[0].status = true;
+            return state;
+        case CUSTOMERTYPE:
+            state.customerType                = data;
+            state.customerBasicInfo[1].status = true;
+            return state;
+        case OPERATEINFO:
+            state.operateInfo                 = data;
+            state.customerBasicInfo[2].status = true;
+            return state;
+        case PERSONINFO:
+            state.personInfo                  = data;
+            state.customerBasicInfo[3].status = true;
+            return state;
+        case OPENACCOUNTINFO:
+            state.openAccountInfo             = data;
+            state.customerBasicInfo[4].status = true;
             return state;
         default:
             return prevState;

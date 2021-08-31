@@ -5,23 +5,36 @@ import {Cell, Checkbox, DateSelect, Input, Select, Switch} from 'zarm';
 
 import './index.less';
 import Navigation                                          from '../../../components/khjd/Navigation';
+import {storeBasicInfo}                                    from '../../../redux/actions/khjd';
+import {AreaCode}                                          from '../../../utils/constant';
 
 class BasicInfo extends React.Component {
-    dataSource = [
-        {label: '人民币', value: 'Basic Info'},
-        {label: '美元', value: 'Basic Info1'}
+    dataSource = [ // 选择的币种
+        {value: '12', label: '人民币'},
+        {value: '123', label: '美元'}
     ];
-    state      = {
-        effectiveDate      : '2021-09-01', // 证件生效日期
+
+    state = Object.assign({}, {
+        customerName       : '', // 客户名称
+        cardType           : '', // 证件类型
+        cardId             : '', // 证件号码
+        setUpDate          : '', // 成立日期
+        creditId           : '', // 统一社会信用代码
+        effectiveDate      : '', // 证件生效日期
         expiryDate         : '', // 证件到期日期
         longEffectiveDate  : false, // 证件是否长期有效
+        registerAddress    : '', // 注册地址
+        areaCode           : '', // 行政区域代码
+        sameRegisterAddress: false,// 同注册地址
         officeAddress      : '', // 办公地址
-        showRegisterCapital: true, // 标明注册资金
-        selectedCurrency   : {},// 选择的币种
+        showRegisterCapital: false, // 标明注册资金
+        registerCurrency   : '', // 注册币种
+        registerCapital    : '', // 注册资本
+        selectedCurrency   : '',// 选择的币种
         paidCapital        : '', // 实收资本金额(万)
         businessScope      : '', // 经营范围
         mainBusiness       : '' // 主营业务
-    };
+    }, {...this.props.basicInfo});
 
     longEffective         = value => { // 证件是否长期有效
         let expiryDate = value ? '9999-12-31' : '';
@@ -29,44 +42,68 @@ class BasicInfo extends React.Component {
     };
     sameRegisteredAddress = value => { // 办公地址 同 注册地址
         let officeAddress = value ? '注册地址' : '';
-        this.setState({officeAddress});
+        this.setState({sameRegisterAddress: value, officeAddress});
     };
-    saveBasicInfo         = () => { // 保存基本信息
+    toAreaCode            = () => { // 去 行政区域代码 选择页面
 
+    };
+
+    saveBasicInfo = () => { // 保存基本信息
+        this.props.storeBasicInfo(this.state);
+        console.log('this.props.khjdReducer', this.props.khjdReducer);
     };
 
     render(){
+        // console.log('this.props.basicInfo', this.props.basicInfo);
 
-        const savedAble = this.state.effectiveDate && this.state.expiryDate;
+        const savedAble = true || this.state.effectiveDate && this.state.expiryDate;
 
         return (
             <>
                 <Navigation title="基本信息"/>
                 <div className="basic-info-entry">
-                    <Cell title="客户名称" description=""/>
-                    <Cell title="证件类型" description=""/>
-                    <Cell title="证件号码" description=""/>
-                    <Cell title="成立日期" description=""/>
-                    <Cell title="统一社会信用代码" description=""/>
+                    <Cell title="客户名称" description={this.state.customerName}/>
+                    <Cell title="证件类型" description={this.state.cardType}/>
+                    <Cell title="证件号码" description={this.state.cardId}/>
+                    <Cell title="成立日期" description={this.state.setUpDate}/>
+                    <Cell title="统一社会信用代码" description={this.state.creditId}/>
                     <Cell title="证件生效日期">
                         <DateSelect title="选择证件生效日期" placeholder="请选择日期" mode="date"
                                     value={this.state.effectiveDate}
                                     onOk={value => this.setState({effectiveDate: value})}
                         />
                     </Cell>
-                    <Cell title="证件到期日期" description="">
-                        <Checkbox onChange={value => this.longEffective(value.target.checked)}>长期有效</Checkbox>
+                    <Cell title="证件到期日期">
+                        <Checkbox checked={this.state.longEffectiveDate}
+                                  onChange={value => this.longEffective(value.target.checked)}>长期有效</Checkbox>
                         <DateSelect title="选择证件到期日期" placeholder="请选择日期" mode="date" max="2099-12-31"
                                     value={this.state.expiryDate} disabled={this.state.longEffectiveDate}
                                     onOk={value => this.setState({expiryDate: value})}
                         />
                     </Cell>
-                    <Cell title="注册地址" description=""/>
-                    <Cell title="行政区域代码" hasArrow/>
+                    <Cell title="注册地址" description={this.state.registerAddress}/>
+                    <Cell title="行政区域代码">
+                        <Select dataSource={AreaCode} value={this.state.areaCode}
+                                onOk={selected => {
+                                    console.log('onOk', JSON.stringify(selected));
+                                    let areaCode = selected[selected.length-1].value;
+                                    this.setState({areaCode}, ()=>{
+                                        console.log('areaCode', this.state.areaCode);
+                                    })
+                                }}
+                                // displayRender={selected => {
+                                //     console.log('displayRender', JSON.stringify(selected));
+                                //     let code = selected[selected.length-1].value;
+                                //     return code + selected.map(item => '---' + item.label);
+                                // }}
+                        />
+                    </Cell>
+
 
                     <div className="office-address">
                         <Cell title="办公地址">
-                            <Checkbox onChange={value => this.sameRegisteredAddress(value.target.checked)}>
+                            <Checkbox checked={this.state.sameRegisterAddress}
+                                      onChange={value => this.sameRegisteredAddress(value.target.checked)}>
                                 同注册地址
                             </Checkbox>
                         </Cell>
@@ -85,30 +122,27 @@ class BasicInfo extends React.Component {
                         {
                             this.state.showRegisterCapital &&
                             <>
-                                <Cell title="注册币种" description=""/>
-                                <Cell title="注册资本金额(万)" description=""/>
+                                <Cell title="注册币种" description={this.state.registerCurrency}/>
+                                <Cell title="注册资本金额(万)" description={this.state.registerCapital}/>
                                 <Cell title="实收币种">
-                                    <Select
-                                        dataSource={this.dataSource}
-                                        onOk={selected => this.setState({selectedCurrency: selected[0]})}
+                                    <Select dataSource={this.dataSource} value={this.state.selectedCurrency}
+                                            onOk={selected => this.setState({selectedCurrency: selected[0].value})}
                                     />
                                 </Cell>
                                 <Cell title="实收资本金额(万)">
-                                    <Input type="text" placeholder="请输入实收资本金额"
-                                           value={this.state.paidCapital}
+                                    <Input placeholder="请输入实收资本金额" value={this.state.paidCapital}
                                            onChange={value => this.setState({paidCapital: value})}
                                     />
                                 </Cell>
                             </>
-
                         }
                     </div>
 
                     <div className="business-scope">
                         <Cell title="经营范围">
-                            <Input autoHeight showLength maxLength="200" type="text" rows="6" placeholder="请输入"
+                            <Input autoHeight showLength maxLength="200" type="text" rows="6"
+                                   placeholder="请输入" value={this.state.businessScope}
                                    className={this.state.businessScope ? '' : 'not-input'}
-                                   value={this.state.businessScope}
                                    onChange={value => this.setState({businessScope: value})}
                             />
                         </Cell>
@@ -116,9 +150,9 @@ class BasicInfo extends React.Component {
 
                     <div className="business-scope">
                         <Cell title="主营业务">
-                            <Input autoHeight showLength maxLength="200" type="text" rows="6" placeholder="请输入主营业务"
+                            <Input autoHeight showLength maxLength="200" type="text" rows="6"
+                                   placeholder="请输入主营业务" value={this.state.mainBusiness}
                                    className={this.state.mainBusiness ? '' : 'not-input'}
-                                   value={this.state.mainBusiness}
                                    onChange={value => this.setState({mainBusiness: value})}
                             />
                         </Cell>
@@ -134,6 +168,9 @@ class BasicInfo extends React.Component {
 }
 
 export default withRouter(connect(
-    state => ({}),
-    {}
+    state => ({
+        khjdReducer: state.khjdReducer,
+        basicInfo  : state.khjdReducer.basicInfo
+    }),
+    {storeBasicInfo}
 )(BasicInfo));

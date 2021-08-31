@@ -6,6 +6,7 @@ import './index.less';
 import Navigation            from '../../../components/khjd/Navigation';
 import LpSwitch              from '../../../components/khjd/Switch';
 import warnImg               from '../../../assets/warn.svg';
+import {storeCustomerType}   from '../../../redux/actions/khjd';
 
 class CustomerType extends React.Component {
     DepositorType       = [
@@ -70,7 +71,7 @@ class CustomerType extends React.Component {
         {value: '03', label: '既是中国内地税收居民，又是其他国家(地区)税收居民'}
     ];
 
-    state = {
+    state = Object.assign({}, {
         depositorType           : '', // 存款人类别
         companyRegisterType     : '', // 企业登记注册类型
         registerDetail          : '', // 注册细项
@@ -94,7 +95,7 @@ class CustomerType extends React.Component {
         customerType            : '', // 客户类型
         switchShareholder       : 0, // 是否我行股东
         switchLinkCompany       : 0 // 是否关联企业
-    };
+    }, {...this.props.customerType});
 
     updateSwitchForeign            = switchForeign => {
         this.setState({switchForeign});
@@ -124,13 +125,17 @@ class CustomerType extends React.Component {
     selectTypeAgency = typeAgency => { // 选中类型机构
         let ta    = this.state.typeAgency;
         let index = ta.indexOf(typeAgency);
-
         if(index < 0){
             ta.push(typeAgency);
         }else{
             ta.splice(index, 1);
         }
         this.setState({typeAgency: ta});
+    };
+
+    saveCustomerType = () => { // 保存客户归类信息
+        this.props.storeCustomerType(this.state);
+        console.log('this.props.khjdReducer', this.props.khjdReducer);
     };
 
     render(){
@@ -317,7 +322,7 @@ class CustomerType extends React.Component {
                     </Cell>
 
                     <div className={['unsaved', savedAble ? 'saved' : ''].join(' ')}
-                         onClick={() => savedAble && this.saveBasicInfo()}>保存
+                         onClick={() => savedAble && this.saveCustomerType()}>保存
                     </div>
                 </div>
             </>
@@ -326,6 +331,9 @@ class CustomerType extends React.Component {
 }
 
 export default connect(
-    state => ({}),
-    {}
+    state => ({
+        khjdReducer : state.khjdReducer,
+        customerType: state.khjdReducer.customerType
+    }),
+    {storeCustomerType}
 )(CustomerType);
