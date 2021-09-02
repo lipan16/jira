@@ -37,15 +37,15 @@ export default defineConfig({
         }
     },
     server : {
-        // port: 4000, //启动端口
-        // open: true, //开启浏览器
+        // port: 4000, // 启动端口
+        // open: true, // 开启浏览器
         host : '0.0.0.0', //开启ip启动
         proxy: { //代理
-            // ws:false, //webSocket
+            // ws:false, // webSocket
             '/api': {
                 target: 'http://8.133.162.30:8080/',
                 // target      : 'http://localhost:8080/',
-                changeOrigin: true, //发送请求头host会被设置target(http://localhost:8080/),避免后端做什么限制
+                changeOrigin: true, // 发送请求头host会被设置target(http://localhost:8080/),避免后端做什么限制
                 pathReWrite : { // 重写url地址
                     '^/': '/'
                 }
