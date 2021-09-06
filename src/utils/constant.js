@@ -4,6 +4,25 @@
 export const ADD = 'add';
 export const DEC = 'dec';
 
+// zarm 下拉刷新状态
+export const REFRESH_STATE = {
+    normal : 0, // 普通
+    pull   : 1, // 下拉刷新（未满足刷新条件）
+    drop   : 2, // 释放立即刷新（满足刷新条件）
+    loading: 3, // 加载中
+    success: 4, // 加载成功
+    failure: 5 // 加载失败
+};
+// zarm 上滑加载状态
+export const LOAD_STATE    = {
+    normal  : 0, // 普通
+    abort   : 1, // 中止
+    loading : 2, // 加载中
+    success : 3, // 加载成功
+    failure : 4, // 加载失败
+    complete: 5 // 加载完成（无新数据）
+};
+
 // khjd相关action对象的type类型
 export const COMPLETELIST    = 'complete_list'; // 已办列表
 export const PENDINGLIST     = 'pending_list'; // 待办列表
@@ -30,7 +49,8 @@ export const RouterPath = {
     operateInfo      : '/khjd/handleBasicInfo/operateInfo',
     personInfo       : '/khjd/handleBasicInfo/personInfo',
     openAccountInfo  : '/khjd/handleBasicInfo/openAccountInfo',
-    basicInfoAreaCode: '/khjd/handleBasicInfo/basicInfo/basicInfoAreaCode'
+    basicInfoAreaCode: '/khjd/handleBasicInfo/basicInfo/basicInfoAreaCode',
+    checkDetail      : '/khjd/checkDetail'
 };
 
 export const CustomerBasicInfo = {

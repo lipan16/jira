@@ -9,15 +9,15 @@ import {RouterPath} from '../utils/constant';
 
 function Home(props){
 
-    let history = useHistory();
-    useEffect(() => {
-        Api.login().then(res => {
-            console.log(res);
-        }).catch(error => {
-            // history.push(RouterPath.about);
-            console.log(error);
-        });
-    }, []);
+    // let history = useHistory();
+    // useEffect(() => {
+    //     Api.login().then(res => {
+    //         console.log(res);
+    //     }).catch(error => {
+    //         // history.push(RouterPath.about);
+    //         console.log(error);
+    //     });
+    // }, []);
 
 
     return (

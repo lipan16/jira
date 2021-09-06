@@ -34,11 +34,11 @@ export default class Header extends React.Component {
                         <div className={active ? '' : 'label-bottom-line'}/>
                     </div>
                 </div>
-                <div className="flex-inline header-status">
-                    <div className="header-status-label">当前状态：</div>
-                    <div className="header-status-value">{statusValue}</div>
-                    <div className="header-status-arrow"/>
-                </div>
+                {/*<div className="flex-inline header-status">*/}
+                {/*    <div className="header-status-label">当前状态：</div>*/}
+                {/*    <div className="header-status-value">{statusValue}</div>*/}
+                {/*    <div className="header-status-arrow"/>*/}
+                {/*</div>*/}
             </>
         );
     }
