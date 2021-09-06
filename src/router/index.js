@@ -14,7 +14,7 @@ import OperateInfo       from '../pages/khjd/handleBasicInfo/operateInfo';
 import PersonInfo        from '../pages/khjd/handleBasicInfo/personInfo';
 import OpenAccountInfo   from '../pages/khjd/handleBasicInfo/openAccountInfo';
 import BasicInfoAreaCode from '../pages/khjd/handleBasicInfo/basicInfoAreaCode';
-import CheckDetail       from '../pages/khjd/checkDetail';
+import RejectApproval    from '../pages/khjd/rejectApproval';
 
 const routes = [
     {
@@ -78,8 +78,8 @@ const routes = [
         component: BasicInfoAreaCode
     },
     {
-        path     : RouterPath.checkDetail,
-        component: CheckDetail
+        path     : RouterPath.rejectApproval,
+        component: RejectApproval
     }
 
 ];

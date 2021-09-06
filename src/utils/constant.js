@@ -1,6 +1,8 @@
 // 该文件用于定义项目中的常量值
 
 // test相关action对象中type类型的常量值
+import RejectApproval from '../pages/khjd/rejectApproval';
+
 export const ADD = 'add';
 export const DEC = 'dec';
 
@@ -50,7 +52,7 @@ export const RouterPath = {
     personInfo       : '/khjd/handleBasicInfo/personInfo',
     openAccountInfo  : '/khjd/handleBasicInfo/openAccountInfo',
     basicInfoAreaCode: '/khjd/handleBasicInfo/basicInfo/basicInfoAreaCode',
-    checkDetail      : '/khjd/checkDetail'
+    rejectApproval   : '/khjd/checkDetail/rejectApproval'
 };
 
 export const CustomerBasicInfo = {
