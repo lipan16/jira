@@ -2,7 +2,7 @@ import React             from 'react';
 import {connect}         from 'react-redux';
 import {withRouter}      from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard/lib/Component';
-import {Toast}           from 'zarm';
+import {Modal, Toast}    from 'zarm';
 
 import './index.less';
 import {dataMasking}     from '../../../utils/func';
@@ -58,9 +58,9 @@ class Detail extends React.Component {
                     <div className="flex-inline lp-cell">
                         <div className="label">联系电话</div>
                         <div className="value">
-                                <span onClick={() => this.showMasking(!telephoneMasking)}>
-                                    {dataMasking('12345678998', telephoneMasking ? 'phone' : '')}
-                                </span>
+                            <span onClick={() => this.showMasking(!telephoneMasking)}>
+                                {dataMasking('12345678998', telephoneMasking ? 'phone' : '')}
+                            </span>
                             <CopyToClipboard text="1234567899111118"
                                              onCopy={() => Toast.show({content: '已复制', stayTime: 1000})}>
                                 <img className="copy-img" src={copyImg} alt=""/>
@@ -72,14 +72,12 @@ class Detail extends React.Component {
                     <LpCell label="地址" value="广东龙胜阿里巴巴化学贸易有限公司尽调广东龙胜阿里巴巴化学贸"/>
 
 
-                    <div className="flex-inline pdf"
-                         onClick={() => this.toTask(RouterPath.rejectApproval)}>
+                    <div className="flex-inline pdf" onClick={() => this.toTask(RouterPath.rejectApproval)}>
                         <img src={checkDetailSvg} className="svg" alt=""/>
                         <div>查看客户信息详情</div>
                         <img src={arrowSvg} className="svg" alt=""/>
                     </div>
-                    <div className="flex-inline pdf"
-                         onClick={() => this.toTask(RouterPath.rejectApproval)}>
+                    <div className="flex-inline pdf" onClick={() => this.toTask(RouterPath.rejectApproval)}>
                         <img src={checkDetailSvg} className="svg" alt=""/>
                         <div>查看信息详情</div>
                         <img src={arrowSvg} className="svg" alt=""/>
@@ -87,12 +85,15 @@ class Detail extends React.Component {
 
                     <div className="btns">
                         <div className="btn handle"
-                             onClick={() => alert('审核通过')}>审核通过
+                             onClick={() => Modal.alert({
+                                 title  : '系统提示',
+                                 content: '审核通过',
+                                 cancelText: '确定'
+                             })}>审核通过
                         </div>
                         <div className="btn transfer"
                              onClick={() => this.toTask(RouterPath.rejectApproval)}>审核不通过
                         </div>
-                        拒绝审批
                     </div>
 
 
@@ -118,7 +119,7 @@ class Detail extends React.Component {
 
 
 export default withRouter(
-    connect(state => (
-        {khjdReducer: state.khjdReducer}
-    ), {})(Detail)
+    connect(state => ({
+        khjdReducer: state.khjdReducer
+    }), {})(Detail)
 );
