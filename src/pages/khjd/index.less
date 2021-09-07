@@ -3,4 +3,65 @@
     flex-grow        : 1;
     background-color : #F5F6FB;
     overflow         : hidden;
+
+    .list{
+        height   : calc(100% - 124px);
+        overflow : auto;
+    }
+
+    .list-item{
+        margin        : 8px 12px;
+        background    : #FFFFFF;
+        box-shadow    : 0 0 5px 0 rgba(233, 237, 255, 0.50);
+        border-radius : 4px;
+        font-family   : PingFangSC-Regular;
+        border-left   : 2px solid #26A872;
+
+        .item-name-status{
+            padding : 16px 0 12px 12px;
+
+            .name{
+                font-family : PingFangSC-Medium;
+                flex-grow   : 1;
+                font-size   : 16px;
+                color       : #333333;
+                line-height : 20px;
+            }
+
+            .status{
+                margin-right     : 12px;
+                font-size        : 12px;
+                min-width        : 5em;
+                text-align       : center;
+                color            : #26A872;
+                //background-color : #26A872;
+            }
+
+            .status-during{
+                color : #FC892C;
+            }
+
+            .status-failed{
+                color : #DE1B1B;
+            }
+        }
+
+        .time{
+            font-size   : 14px;
+            color       : #969799;
+            line-height : 16px;
+            padding     : 0 0 12px 12px;
+        }
+
+        .reason{
+            border-radius : 2px;
+            padding       : 4px;
+            background    : #FFECEC;
+            font-size     : 12px;
+            color         : #FB2C5A;
+            line-height   : 16px;
+            margin        : 0 12px 12px 12px;
+        }
+    }
+
 }

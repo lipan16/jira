@@ -48,6 +48,11 @@ export default defineConfig({
                 changeOrigin: true, // 发送请求头host会被设置target(http://localhost:8080/),避免后端做什么限制
                 pathReWrite : { // 重写url地址
                     '^/': '/'
+                },
+                configure(proxy, options){
+                    proxy.on('proxyReq', (proxyReq, req, res) =>{
+                        console.log(proxyReq.path);
+                    })
                 }
             }
         },
