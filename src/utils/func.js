@@ -41,3 +41,21 @@ export function getIndexById(array, id){
 export function objIsEmpty(obj){
     return Reflect.ownKeys(obj).length === 0 && obj.constructor === Object;
 }
+
+// 获取当前日期的上一个月
+export function getPreMonth(){
+    let date               = '2021-08-31';
+    let [year, month, day] = date.split('-');
+    let month2             = parseInt(month) - 1;
+    if(0 === month2){
+        year   = parseInt(year) - 1;
+        month2 = 12;
+    }
+    let date2 = new Date(year, month2, 0);
+    let day2  = date2.getDate();
+    if(day > day2){
+        day = day2;
+    }
+    month2 = month2 < 10 ? '0' + month2 : month2;
+    return year + month2 + day;
+}

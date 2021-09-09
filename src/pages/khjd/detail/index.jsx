@@ -48,7 +48,7 @@ class Detail extends React.Component {
         return (<>
             <Navigation title="尽调任务详情" className="check-detail-nav" backSvg={backSvg}/>
 
-            <div className="detail flex-list">
+            <div className="flex-list detail">
                 <div className="blue-bg"/>
 
                 <div className="header flex-list flex-grow">
